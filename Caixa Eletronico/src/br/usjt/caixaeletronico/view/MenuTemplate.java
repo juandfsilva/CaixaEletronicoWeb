@@ -26,28 +26,26 @@ public class MenuTemplate extends JFrame {
 		JPanel buttonsContainer = new JPanel();
 		JPanel titleContainer = new JPanel();
 		JPanel descriptionContainer = new JPanel();
-		JPanel spaceContainer = new JPanel();
 		
 		c.add(titleContainer);
 		c.add(descriptionContainer);
 		c.add(buttonsContainer);
-		c.add(spaceContainer);
 
 		titleContainer.add(new JLabel(titulo, JLabel.CENTER));
 		titleContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 16, 16));
 		descriptionContainer.add(new JLabel(descricao, JLabel.LEFT));
 		descriptionContainer.setLayout(new FlowLayout(FlowLayout.LEFT, 32, 32));
-		spaceContainer.add(Box.createRigidArea(new Dimension(5, 200)));
 		
 		buttonsContainer.setLayout(new BorderLayout());
 		buttons = new JButton[buttonsText.length];
 		JPanel[] panels = new JPanel[2];
-		int firstPaneCount = buttonsText.length/2;
-		int secondPaneCount = buttonsText.length - firstPaneCount;
+		int[] paneCount = new int[2];
+		paneCount[0] = buttonsText.length/2;
+		paneCount[1] = buttonsText.length - paneCount[0];
 		for (int i = 0; i < panels.length; ++i) {
 			panels[i] = new JPanel();
-			panels[i].setLayout(new GridLayout(Math.max(firstPaneCount, secondPaneCount), 1, 8, 8));
-			//panels[i].setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+			panels[i].setLayout(new GridLayout(paneCount[i], 1, 8, 8));
+			panels[i].setBorder(BorderFactory.createEmptyBorder(0, 16, 200, 16));
 		}
 		for (int i = 0; i < buttons.length; i++) {
 			buttons[i] = new JButton(buttonsText[i]);
@@ -59,7 +57,8 @@ public class MenuTemplate extends JFrame {
 		}
 		buttonsContainer.add(panels[0], BorderLayout.WEST);
 		buttonsContainer.add(panels[1], BorderLayout.EAST);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setSize(800, 600);
 		setLocationRelativeTo(null);
 		//setUndecorated(true);
 	}
