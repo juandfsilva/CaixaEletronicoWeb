@@ -6,8 +6,6 @@ Precisamos fazer um monte de coisa chata pra cacete, tipo:
   - Criptografia;
   - Fazer a UI em 3 linguagens...
 
-====================================================================
-
 ## Detalhes
 
 * Entrega 1 Interface Completa dos casos de uso de:
@@ -17,9 +15,6 @@ Precisamos fazer um monte de coisa chata pra cacete, tipo:
 * Entrega Final Midia com software, documentações e manualv(Caso de uso, classes, sequencia e MER) [Quanto mais completo mais nota] ABNT etc
 * MYSQL, Java, Eclipse, POO, só o que aprendemos.
 
-
-====================================================================
-
 ## Datas 
 
 * 16/09 - Entrega 1
@@ -28,8 +23,6 @@ Precisamos fazer um monte de coisa chata pra cacete, tipo:
 * 07/10 - Entrega 4
 * 14/10 - N/A
 * 21/10 - Entrega Final
-
-====================================================================
 
 ## Tarefas
 
@@ -60,8 +53,7 @@ Precisamos fazer um monte de coisa chata pra cacete, tipo:
 |:----------------------------- |:-------------:|:-------------:|
 |   DAO(Data Object Access)	|	SIM	|	M	|
 |		MYSQL		|	SIM	|	G	|
-|_______________________________|_______________|_______________|
-		12 Itens = (G = Gustavo, J = Juan, M = Marco)
+`12 Itens = (G = Gustavo, J = Juan, M = Marco)`
 
 
 
