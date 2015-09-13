@@ -57,7 +57,7 @@ public class MenuTemplate extends JFrame {
 		}
 		buttonsContainer.add(panels[0], BorderLayout.WEST);
 		buttonsContainer.add(panels[1], BorderLayout.EAST);
-		//setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 		//setUndecorated(true);

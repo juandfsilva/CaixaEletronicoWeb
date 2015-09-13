@@ -14,18 +14,17 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//JFrame frame = new Mensagem"Relatorio Notas", Dispenser.getRelatorioNotas());
-		JFrame frame = new PeriodoExtrato();
-		JFrame frame1 = new ConsultarSaldo();
-		JFrame frame2 = new ConsultarExtrato("Extrato de 7 dias");
-		JFrame frame3 = new CadastroDebitoAutom();
+		JFrame msg = new Mensagem("Relatorio Notas", Dispenser.getRelatorioNotas());
+		JFrame pExtrato = new PeriodoExtrato();
+		JFrame cSaldo = new ConsultarSaldo();
+		JFrame cadDebAutom = new CadastroDebitoAutom();
 		
 		
-		frame.setVisible(false);
-		frame1.setVisible(false);
-		frame2.setVisible(false);
-		frame3.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pExtrato.setVisible(true);
+		cSaldo.setVisible(false);
+		msg.setVisible(false);
+		cadDebAutom.setVisible(false);
+		pExtrato.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
