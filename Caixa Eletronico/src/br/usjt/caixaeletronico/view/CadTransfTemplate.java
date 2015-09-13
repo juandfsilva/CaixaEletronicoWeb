@@ -17,7 +17,7 @@ public class CadTransfTemplate extends JFrame{
 	
 	protected JButton[] buttons;
 	private JLabel[] labels;
-	private JTextField[] fields;
+	protected JTextField[] fields;
 	
 	public CadTransfTemplate(String titulo, String descricao, String[] labelsText, String[] buttonsText) {
 		// TODO Auto-generated constructor stub

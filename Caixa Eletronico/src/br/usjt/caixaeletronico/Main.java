@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import br.usjt.caixaeletronico.model.Dispenser;
 import br.usjt.caixaeletronico.view.CadTransfTemplate;
+import br.usjt.caixaeletronico.view.CadastroDebitoAutom;
 import br.usjt.caixaeletronico.view.ConsultarExtrato;
 import br.usjt.caixaeletronico.view.ConsultarSaldo;
 import br.usjt.caixaeletronico.view.Mensagem;
@@ -20,10 +21,10 @@ public class Main {
 		JFrame cadDebAutom = new CadastroDebitoAutom();
 		
 		
-		pExtrato.setVisible(true);
+		pExtrato.setVisible(false);
 		cSaldo.setVisible(false);
 		msg.setVisible(false);
-		cadDebAutom.setVisible(false);
+		cadDebAutom.setVisible(true);
 		pExtrato.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}

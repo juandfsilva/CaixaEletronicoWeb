@@ -3,7 +3,9 @@ package br.usjt.caixaeletronico.model;
 public class Extrato {
 
 	public static String getExtrato(int days) {
-		return  "--------------------"+days+"------------------------\n"+
+		return  "Agência 00hue\n"+
+				"Conta huehue\n"+
+				"Periodo dos ultimos "+days+"\n\n\n"+				
 				"Total de Créditos ----------------------6.500,00\n"+
 				"Depósitos / Transferências -------------500,00\n"+
 				"Salário e Proventos --------------------4.000,00\n"+
