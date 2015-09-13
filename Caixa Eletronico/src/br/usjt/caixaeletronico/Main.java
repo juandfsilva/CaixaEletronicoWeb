@@ -3,6 +3,7 @@ package br.usjt.caixaeletronico;
 import javax.swing.JFrame;
 
 import br.usjt.caixaeletronico.model.Dispenser;
+import br.usjt.caixaeletronico.view.CadTransfTemplate;
 import br.usjt.caixaeletronico.view.ConsultarExtrato;
 import br.usjt.caixaeletronico.view.ConsultarSaldo;
 import br.usjt.caixaeletronico.view.Mensagem;
@@ -17,10 +18,13 @@ public class Main {
 		JFrame frame = new PeriodoExtrato();
 		JFrame frame1 = new ConsultarSaldo();
 		JFrame frame2 = new ConsultarExtrato("Extrato de 7 dias");
+		JFrame frame3 = new CadastroDebitoAutom();
 		
-		frame.setVisible(true);
-		frame1.setVisible(true);
-		frame2.setVisible(true);
+		
+		frame.setVisible(false);
+		frame1.setVisible(false);
+		frame2.setVisible(false);
+		frame3.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}

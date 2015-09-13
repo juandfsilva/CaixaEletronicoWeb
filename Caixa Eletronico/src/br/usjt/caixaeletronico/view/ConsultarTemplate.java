@@ -26,7 +26,7 @@ public class ConsultarTemplate extends JFrame {
 		Container textContainer = new Container();
 		JLabel descr = new JLabel(descricao);
 		descr.setHorizontalAlignment(SwingConstants.CENTER);
-		descr.setFont(descr.getFont().deriveFont(33.0f));
+		descr.setFont(descr.getFont().deriveFont(23.0f));
 		
 		tA = new JTextPane();
 		tA.setText("Teste");
