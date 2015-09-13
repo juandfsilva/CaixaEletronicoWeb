@@ -10,6 +10,7 @@ import br.usjt.caixaeletronico.view.ConsultarSaldo;
 import br.usjt.caixaeletronico.view.Mensagem;
 import br.usjt.caixaeletronico.view.MenuTemplate;
 import br.usjt.caixaeletronico.view.PeriodoExtrato;
+import br.usjt.caixaeletronico.view.Saque;
 
 public class Main {
 
@@ -19,12 +20,14 @@ public class Main {
 		JFrame pExtrato = new PeriodoExtrato();
 		JFrame cSaldo = new ConsultarSaldo();
 		JFrame cadDebAutom = new CadastroDebitoAutom();
+		JFrame saque = new Saque();
 		
 		
 		pExtrato.setVisible(false);
 		cSaldo.setVisible(false);
 		msg.setVisible(false);
-		cadDebAutom.setVisible(true);
+		cadDebAutom.setVisible(false);
+		saque.setVisible(true);
 		pExtrato.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
