@@ -22,8 +22,7 @@ public class Main {
 		frame1.setVisible(true);
 		frame2.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 
 }
