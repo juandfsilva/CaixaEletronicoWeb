@@ -13,7 +13,7 @@ public class AdmLogin extends JFrame implements ActionListener {
 		private JLabel lUser,lSen;
 
 		public AdmLogin() {
-
+			super("Login Administrador");
 			// controlar layout
 			JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 			// controlar label
@@ -41,20 +41,16 @@ public class AdmLogin extends JFrame implements ActionListener {
 			control.add(bEnt);
 			control.add(bSai);
 
-			JPanel gui = new JPanel(new BorderLayout(10, 10));
+			JPanel gui = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
 			gui.setBorder(new TitledBorder("Administrador"));
 			gui.add(controlInput, BorderLayout.CENTER);
 			gui.add(control, BorderLayout.SOUTH);
 
-			JFrame log = new JFrame("Login");
-			log.setContentPane(gui);
+			setContentPane(gui);
 
-			log.setResizable(false);
-			log.setSize(250, 150);
-			log.setVisible(true);
-			log.setLocationRelativeTo(null);
-			log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+			setResizable(false);
+			setSize(800, 600);
+			setLocationRelativeTo(null);
 		}
 
 		@Override

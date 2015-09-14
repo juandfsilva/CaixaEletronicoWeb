@@ -15,7 +15,7 @@ public class CadastroDebitoAutom extends CadTransfTemplate{
 		super("Cadastro de Débito Automático", "Débito Automático", labelsText, buttonsText);
 		
 		//Cadastrar
-		super.buttons[0].addActionListener(new ActionListener() {
+		buttons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 					Mensagem msg = new Mensagem("Cadastro Débito Automático", 
@@ -26,7 +26,7 @@ public class CadastroDebitoAutom extends CadTransfTemplate{
 		});
 		
 		//Voltar
-		super.buttons[1].addActionListener(new ActionListener() {
+		buttons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				dispose();

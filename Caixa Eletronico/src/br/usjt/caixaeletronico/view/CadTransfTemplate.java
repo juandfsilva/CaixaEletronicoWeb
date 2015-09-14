@@ -53,7 +53,8 @@ public class CadTransfTemplate extends JFrame{
 		c.add(descr, BorderLayout.NORTH);
 		c.add(buttonContainer, BorderLayout.SOUTH);
 		c.add(gridContainer, BorderLayout.WEST);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setSize(800, 600);
+		setLocationRelativeTo(null);
 	}
 
 }

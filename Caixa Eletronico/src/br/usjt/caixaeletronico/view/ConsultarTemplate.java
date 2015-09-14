@@ -53,7 +53,8 @@ public class ConsultarTemplate extends JFrame {
 		c.add(descr, BorderLayout.NORTH);
 		c.add(buttonContainer, BorderLayout.SOUTH);
 		c.add(textContainer, BorderLayout.CENTER);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setSize(800, 600);
+		setLocationRelativeTo(null);
 		
 		//setUndecorated(true);
 	}

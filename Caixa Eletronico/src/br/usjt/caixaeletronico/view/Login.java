@@ -15,7 +15,7 @@ public class Login extends JFrame implements ActionListener {
 
 	public Login() 
 	{
-		
+		super("Login");
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -54,22 +54,16 @@ public class Login extends JFrame implements ActionListener {
 		JPanel control = new JPanel(new FlowLayout(FlowLayout.CENTER, 5,2));
 		control.add(bEnt);
 		
-		
 		JPanel gui = new JPanel(new BorderLayout(10,10));
         gui.setBorder(new TitledBorder("Bem Vindo"));
         gui.add(controlInput, BorderLayout.CENTER);
         gui.add(control, BorderLayout.SOUTH);
        
-        JFrame log = new JFrame("Login");
-        log.setContentPane(gui);
+        setContentPane(gui);
         
-        log.setResizable(false);
-        log.setSize(250,250);
-        log.setVisible(true);
-		log.setLocationRelativeTo(null);
-		log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+        setResizable(false);
+        setSize(800, 600);
+		setLocationRelativeTo(null);
        }
         
 

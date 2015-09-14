@@ -12,7 +12,7 @@ public class PeriodoExtrato extends MenuTemplate {
 		super("Deseja acessar o extrato de que periodo?", "", buttonsText);
 		
 		//7 Dias
-		super.buttons[0].addActionListener(new ActionListener() {
+		buttons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JFrame cExtrato = new ConsultarExtrato("Extrato dos ultimos 7 dias", 7);
@@ -21,16 +21,15 @@ public class PeriodoExtrato extends MenuTemplate {
 		});
 		
 		//14 dias
-		super.buttons[1].addActionListener(new ActionListener() {
+		buttons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JFrame cExtrato = new ConsultarExtrato("Extrato dos ultimos 14 dias", 14);
 				cExtrato.setVisible(true);
 			}
 		});
-		
 		//Outro periodo
-		super.buttons[2].addActionListener(new ActionListener() {
+		buttons[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				int days = Integer.parseInt(
@@ -41,7 +40,7 @@ public class PeriodoExtrato extends MenuTemplate {
 		});
 		
 		//Cancelar
-		super.buttons[3].addActionListener(new ActionListener() {
+		buttons[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				dispose();

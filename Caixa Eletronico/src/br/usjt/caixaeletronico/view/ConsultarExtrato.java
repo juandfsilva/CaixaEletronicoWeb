@@ -11,10 +11,10 @@ public class ConsultarExtrato extends ConsultarTemplate {
 	public ConsultarExtrato(String periodo, int days) {
 		super(periodo, "Extrato", buttonsText, 1);
 		String text = Extrato.getExtrato(days);
-		super.tA.setText(text);
+		tA.setText(text);
 		
 		//Button voltar
-		super.buttons[0].addActionListener(new ActionListener() {
+		buttons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();//Fecha uma janela
 				
@@ -22,14 +22,14 @@ public class ConsultarExtrato extends ConsultarTemplate {
 		});
 		
 		//Button extrato
-		super.buttons[1].addActionListener(new ActionListener() {
+		buttons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
 		
 		//Button Imprimir
-		super.buttons[2].addActionListener(new ActionListener() {
+		buttons[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
