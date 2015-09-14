@@ -16,6 +16,19 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		JFrame[] views = {
+			new Mensagem("Relatorio Notas", Dispenser.getRelatorioNotas()),
+			new PeriodoExtrato(),
+			new ConsultarSaldo(),
+			new CadastroDebitoAutom(),
+			new Saque()
+		};
+		for(int i = 0; i < views.length; ++i) {
+				views[i].setVisible(false);
+				views[i].setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				views[i].addWindowListener(new WindowListener() {
+			});
+		}
 		JFrame msg = new Mensagem("Relatorio Notas", Dispenser.getRelatorioNotas());
 		JFrame pExtrato = new PeriodoExtrato();
 		JFrame cSaldo = new ConsultarSaldo();
