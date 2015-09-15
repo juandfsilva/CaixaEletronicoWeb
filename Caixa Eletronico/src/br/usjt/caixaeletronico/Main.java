@@ -13,6 +13,7 @@ import br.usjt.caixaeletronico.view.ConsultarExtrato;
 import br.usjt.caixaeletronico.view.ConsultarSaldo;
 import br.usjt.caixaeletronico.view.Login;
 import br.usjt.caixaeletronico.view.Mensagem;
+import br.usjt.caixaeletronico.view.MenuPrinc;
 import br.usjt.caixaeletronico.view.MenuTemplate;
 import br.usjt.caixaeletronico.view.OutroSaq;
 import br.usjt.caixaeletronico.view.PeriodoExtrato;
@@ -24,6 +25,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		final JFrame[] views = {
+			new MenuPrinc(),
 			new AdmLogin(),
 			new CadastroDebitoAutom(),
 			new ConsultarExtrato("7", 7),
