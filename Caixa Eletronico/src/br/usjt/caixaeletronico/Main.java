@@ -24,16 +24,16 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		final JFrame[] views = {
-			new AdmLogin(),
-			new CadastroDebitoAutom(),
-			new ConsultarExtrato("7", 7),
-			new ConsultarSaldo(),
-			new Login(),
-			new Mensagem("Relatorio Notas", Dispenser.getRelatorioNotas()),
-			new OutroSaq(),
-			new PeriodoExtrato(),
+			//new AdmLogin(),
+			//new CadastroDebitoAutom(),
+			//new ConsultarExtrato("7", 7),
+			//new ConsultarSaldo(),
+			//new Login(),
+			//new Mensagem("Relatorio Notas", Dispenser.getRelatorioNotas()),
+			//new OutroSaq(),
+			//new PeriodoExtrato(),
 			new Saque(),
-			new TransfEntreConta()
+			//new TransfEntreConta()
 		};
 		for(int i = 0; i < views.length; ++i) {
 				views[i].setVisible(false);
