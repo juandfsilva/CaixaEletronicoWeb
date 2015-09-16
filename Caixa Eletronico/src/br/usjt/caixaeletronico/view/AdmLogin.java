@@ -47,7 +47,7 @@ public class AdmLogin extends JFrame implements ActionListener {
 			gui.add(control, BorderLayout.SOUTH);
 
 			setContentPane(gui);
-
+			setUndecorated(true);
 			setResizable(false);
 			setSize(800, 600);
 			setLocationRelativeTo(null);
