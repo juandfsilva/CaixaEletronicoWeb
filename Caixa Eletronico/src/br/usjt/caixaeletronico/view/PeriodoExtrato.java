@@ -7,15 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class PeriodoExtrato extends MenuTemplate {
-	private static String[] buttonsText = { "Ultimos 7 Dias", "Ultimos 14 dias", "Outro Periodo", "Cancelar" };
+	private static String[] buttonsText = { Messages.getString("PeriodoExtrato.0"), Messages.getString("PeriodoExtrato.1"), Messages.getString("PeriodoExtrato.2"), Messages.getString("PeriodoExtrato.3") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	public PeriodoExtrato() {
-		super("Deseja acessar o extrato de que periodo?", "", buttonsText);
+		super(Messages.getString("PeriodoExtrato.4"), "", buttonsText); //$NON-NLS-1$ //$NON-NLS-2$
 		
 		//7 Dias
 		buttons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JFrame cExtrato = new ConsultarExtrato("Extrato dos ultimos 7 dias", 7);
+				JFrame cExtrato = new ConsultarExtrato(Messages.getString("PeriodoExtrato.5"), 7); //$NON-NLS-1$
 				cExtrato.setVisible(true);
 			}
 		});
@@ -24,7 +24,7 @@ public class PeriodoExtrato extends MenuTemplate {
 		buttons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JFrame cExtrato = new ConsultarExtrato("Extrato dos ultimos 14 dias", 14);
+				JFrame cExtrato = new ConsultarExtrato(Messages.getString("PeriodoExtrato.6"), 14); //$NON-NLS-1$
 				cExtrato.setVisible(true);
 			}
 		});
@@ -33,8 +33,8 @@ public class PeriodoExtrato extends MenuTemplate {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				int days = Integer.parseInt(
-						JOptionPane.showInputDialog("Digite o periodo desejado em dias:"));
-				JFrame cExtrato = new ConsultarExtrato("Extrato de outro periodo", days);
+						JOptionPane.showInputDialog(Messages.getString("PeriodoExtrato.7"))); //$NON-NLS-1$
+				JFrame cExtrato = new ConsultarExtrato(Messages.getString("PeriodoExtrato.8"), days); //$NON-NLS-1$
 				cExtrato.setVisible(true);
 			}
 		});

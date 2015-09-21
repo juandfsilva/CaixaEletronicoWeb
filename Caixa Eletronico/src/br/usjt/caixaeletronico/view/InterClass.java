@@ -13,16 +13,16 @@ public class InterClass extends JFrame implements ActionListener {
 
 		JPanel bPanel = new JPanel(new GridLayout(3, 1));
 
-		bIng = new JButton("Inglês");
-		bPort = new JButton("Portugues");
-		bEsp = new JButton("Espanho");
+		bIng = new JButton(Messages.getString("InterClass.0")); //$NON-NLS-1$
+		bPort = new JButton(Messages.getString("InterClass.1")); //$NON-NLS-1$
+		bEsp = new JButton(Messages.getString("InterClass.2")); //$NON-NLS-1$
 
 		bPanel.add(bPort);
 		bPanel.add(bIng);
 		bPanel.add(bEsp);
-		bPanel.setBorder(new TitledBorder("Escolha um idioma"));
+		bPanel.setBorder(new TitledBorder(Messages.getString("InterClass.3"))); //$NON-NLS-1$
 
-		JFrame inter = new JFrame("Idioma");
+		JFrame inter = new JFrame(Messages.getString("InterClass.4")); //$NON-NLS-1$
 		inter.setContentPane(bPanel);
 
 		inter.setResizable(false);

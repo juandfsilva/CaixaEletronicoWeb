@@ -15,7 +15,7 @@ public class Login extends JFrame implements ActionListener {
 
 	public Login() 
 	{
-		super("Login");
+		super(Messages.getString("Login.0")); //$NON-NLS-1$
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -24,20 +24,20 @@ public class Login extends JFrame implements ActionListener {
 		JPanel controlField = new JPanel(new GridLayout( 0, 1, 3, 3));
 
 		//Organizar itens no layout
-		bEnt = new JButton("Entrar");
+		bEnt = new JButton(Messages.getString("Login.1")); //$NON-NLS-1$
 		tAg = new JTextField(15);
 		tCont = new JTextField(15);
 		tSen = new JTextField(15);
-		lAg = new JLabel("Agência");
-		lCont = new JLabel("Conta");
-		lSen = new JLabel("Senha");
-		lBan = new JLabel("Banco");
+		lAg = new JLabel(Messages.getString("Login.2")); //$NON-NLS-1$
+		lCont = new JLabel(Messages.getString("Login.3")); //$NON-NLS-1$
+		lSen = new JLabel(Messages.getString("Login.4")); //$NON-NLS-1$
+		lBan = new JLabel(Messages.getString("Login.5")); //$NON-NLS-1$
 		JComboBox<String> Cban = new JComboBox<String> ();
-		Cban.addItem("");
-		Cban.addItem("Itau");
+		Cban.addItem(""); //$NON-NLS-1$
+		Cban.addItem("Itau"); //$NON-NLS-1$
 		Cban.addItem("Bradesco");
-		Cban.addItem("Santander");
-		Cban.addItem("HSBC");
+		Cban.addItem("Santander"); //$NON-NLS-1$
+		Cban.addItem("HSBC"); //$NON-NLS-1$
 		
 		controlInput.add(controlLabel, BorderLayout.WEST);
 		controlInput.add(controlField, BorderLayout.CENTER);
@@ -55,7 +55,7 @@ public class Login extends JFrame implements ActionListener {
 		control.add(bEnt);
 		
 		JPanel gui = new JPanel(new BorderLayout(10,10));
-        gui.setBorder(new TitledBorder("Bem Vindo"));
+        gui.setBorder(new TitledBorder(Messages.getString("Login.6"))); //$NON-NLS-1$
         gui.add(controlInput, BorderLayout.CENTER);
         gui.add(control, BorderLayout.SOUTH);
        

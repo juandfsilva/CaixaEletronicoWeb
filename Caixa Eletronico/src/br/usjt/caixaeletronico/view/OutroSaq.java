@@ -13,7 +13,7 @@ public class OutroSaq extends JFrame implements ActionListener {
 	private JLabel lR$, lText;
 
 	public OutroSaq() {
-		super("Saque");
+		super(Messages.getString("OutroSaq.0")); //$NON-NLS-1$
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -22,11 +22,11 @@ public class OutroSaq extends JFrame implements ActionListener {
 		JPanel controlField = new JPanel(new GridLayout(0, 1, 3, 3));
 
 		// Organizar itens no layout
-		bPros = new JButton("Prosseguir");
-		bCanc = new JButton("Cancelar");
+		bPros = new JButton(Messages.getString("OutroSaq.1")); //$NON-NLS-1$
+		bCanc = new JButton(Messages.getString("OutroSaq.2")); //$NON-NLS-1$
 		tValor = new JTextField(15);
-		lR$ = new JLabel("R$");
-		lText = new JLabel("Qual valor deseja sacar ?");
+		lR$ = new JLabel("R$"); //$NON-NLS-1$
+		lText = new JLabel(Messages.getString("OutroSaq.3")); //$NON-NLS-1$
 
 		controlInput.add(controlLabel, BorderLayout.WEST);
 		controlInput.add(controlField, BorderLayout.CENTER);
