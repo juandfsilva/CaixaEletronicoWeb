@@ -1,6 +1,5 @@
 package br.usjt.caixaeletronico.view;
 import java.awt.*;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -54,7 +53,7 @@ public class Login extends JFrame implements ActionListener {
 		JPanel control = new JPanel(new FlowLayout(FlowLayout.CENTER, 5,2));
 		control.add(bEnt);
 		
-		JPanel gui = new JPanel(new BorderLayout(10,10));
+		JPanel gui = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
         gui.setBorder(new TitledBorder(Messages.getString("Login.6"))); //$NON-NLS-1$
         gui.add(controlInput, BorderLayout.CENTER);
         gui.add(control, BorderLayout.SOUTH);

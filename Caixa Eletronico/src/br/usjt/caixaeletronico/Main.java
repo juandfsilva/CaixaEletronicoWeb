@@ -11,6 +11,7 @@ import br.usjt.caixaeletronico.view.CadTransfTemplate;
 import br.usjt.caixaeletronico.view.CadastroDebitoAutom;
 import br.usjt.caixaeletronico.view.ConsultarExtrato;
 import br.usjt.caixaeletronico.view.ConsultarSaldo;
+import br.usjt.caixaeletronico.view.InterClass;
 import br.usjt.caixaeletronico.view.Login;
 import br.usjt.caixaeletronico.view.Mensagem;
 import br.usjt.caixaeletronico.view.MenuPrinc;
@@ -25,6 +26,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		final JFrame[] views = {
+			new InterClass(),
 			new MenuPrinc(),
 			new AdmLogin(),
 			new CadastroDebitoAutom(),
@@ -35,7 +37,7 @@ public class Main {
 			new OutroSaq(),
 			new PeriodoExtrato(),
 			new Saque(),
-			//new TransfEntreConta()
+			new TransfEntreConta()
 		};
 		for(int i = 0; i < views.length; ++i) {
 				views[i].setVisible(false);

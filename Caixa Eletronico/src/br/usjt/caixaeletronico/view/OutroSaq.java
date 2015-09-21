@@ -39,7 +39,7 @@ public class OutroSaq extends JFrame implements ActionListener {
 		control.add(bPros);
 		control.add(bCanc);
 
-		JPanel gui = new JPanel(new BorderLayout(35, 35));
+		JPanel gui = new JPanel((new FlowLayout(FlowLayout.CENTER, 5, 2)));
 		gui.add(controlInput, BorderLayout.CENTER);
 		gui.add(control, BorderLayout.SOUTH);
 
