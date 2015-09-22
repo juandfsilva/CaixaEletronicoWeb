@@ -3,6 +3,8 @@ package br.usjt.caixaeletronico.view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
@@ -12,8 +14,8 @@ public class OutroSaq extends JFrame implements ActionListener {
 	private JTextField tValor;
 	private JLabel lR$, lText;
 
-	public OutroSaq() {
-		super("Saque");
+	public OutroSaq(ResourceBundle resourceBundle) {
+		super(resourceBundle.getString("Saque2.Titulo"));
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -22,11 +24,11 @@ public class OutroSaq extends JFrame implements ActionListener {
 		JPanel controlField = new JPanel(new GridLayout(0, 1, 3, 3));
 
 		// Organizar itens no layout
-		bPros = new JButton("Prosseguir");
-		bCanc = new JButton("Cancelar");
+		bPros = new JButton(resourceBundle.getString("Prosseguir"));
+		bCanc = new JButton(resourceBundle.getString("Cancelar"));
 		tValor = new JTextField(15);
-		lR$ = new JLabel("R$");
-		lText = new JLabel("Qual valor deseja sacar ?");
+		lR$ = new JLabel(resourceBundle.getString("UnidadeMonetaria"));
+		lText = new JLabel(resourceBundle.getString("Saque2.QualValor"));
 
 		controlInput.add(controlLabel, BorderLayout.WEST);
 		controlInput.add(controlField, BorderLayout.CENTER);

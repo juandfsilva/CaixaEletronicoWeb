@@ -2,21 +2,27 @@ package br.usjt.caixaeletronico.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 
 public class TransfEntreConta extends CadTransfTemplate {
 
-	private static String[] buttonsText = { "Cadastrar", "Voltar" };
-	private static String[] labelsText = { "Conta:", "Agência:", "Quantia:" };
-
-	public TransfEntreConta() {
+	public TransfEntreConta(final ResourceBundle resourceBundle) {
 		// TODO Auto-generated constructor stub
-		super("Transferência Entre Contas", "Transferência", labelsText, buttonsText);
+		super(resourceBundle.getString("Transferencia.titulo"), resourceBundle
+				.getString("Transferencia.desc"), new String[] {
+				resourceBundle.getString("Transferencia.conta"),
+				resourceBundle.getString("Transferencia.agencia"),
+				resourceBundle.getString("Transferencia.quantia") },
+				new String[] { resourceBundle.getString("Cadastrar"),
+						resourceBundle.getString("Voltar") });
 
 		// Transferir
 		buttons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Mensagem msg = new Mensagem("Cadastro Débito Automático", "Cadastro Realizado com sucesso!!");
+				Mensagem msg = new Mensagem(resourceBundle,
+						"Cadastro D�bito Autom�tico",
+						"Cadastro Realizado com sucesso!!");
 				msg.setVisible(true);
 				dispose();
 			}

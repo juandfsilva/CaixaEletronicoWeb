@@ -3,26 +3,50 @@ package br.usjt.caixaeletronico.view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
-public class InterClass extends JFrame implements ActionListener {
-	private JButton bIng, bPort, bEsp;
+import br.usjt.caixaeletronico.Main;
 
+public class InterClass extends JFrame{
+	private ArrayList<JButton> bLangs = new ArrayList<JButton>();
+	private static class Par {
+		Par(String nome, ResourceBundle rb) {
+			this.nome = nome;
+			this.rb = rb;
+		}
+		String nome;
+		ResourceBundle rb;
+	}
+	ArrayList<Par> rbList = new ArrayList<Par>();
 	public InterClass() {
-
+	}
+	public InterClass(int selectedRb) {
+		//TODO(anyone): crie os properties e preencha os getBundle abaixo;
+		rbList.add(new Par("Portugues", ResourceBundle.getBundle("messages.properties")));
+		rbList.add(new Par("Ingles", ResourceBundle.getBundle("messages.properties")));
+		rbList.add(new Par("Espanhol", ResourceBundle.getBundle("messages.properties")));
 		JPanel bPanel = new JPanel(new GridLayout(3, 1));
+		for(int i = 0, s = rbList.size(); i < s; ++i)
+		{
+			JButton b = new JButton(rbList.get(i).rb.getString("Idioma." + rbList.get(i).nome));
+			final int index = i;
+			b.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					Main.start(rbList.get(index).rb);
+				}
+			});
+			bLangs.add(b);
+			bPanel.add(b);
+		}
+		bPanel.setBorder(new TitledBorder(rbList.get(selectedRb).rb.getString("Idioma.Escolha")));
 
-		bIng = new JButton("Inglês");
-		bPort = new JButton("Portugues");
-		bEsp = new JButton("Espanho");
-
-		bPanel.add(bPort);
-		bPanel.add(bIng);
-		bPanel.add(bEsp);
-		bPanel.setBorder(new TitledBorder("Escolha um idioma"));
-
-		JFrame inter = new JFrame("Idioma");
+		JFrame inter = new JFrame(rbList.get(selectedRb).rb.getString("Idioma.Idioma"));
 		inter.setContentPane(bPanel);
 
 		inter.setResizable(false);
@@ -30,11 +54,6 @@ public class InterClass extends JFrame implements ActionListener {
 		inter.setVisible(true);
 		inter.setLocationRelativeTo(null);
 		inter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-	}
-
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 
 	}
 

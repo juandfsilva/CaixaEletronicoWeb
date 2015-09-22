@@ -1,8 +1,9 @@
 package br.usjt.caixaeletronico.view;
 import java.awt.*;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
@@ -13,9 +14,9 @@ public class Login extends JFrame implements ActionListener {
 	private JLabel lAg, lCont, lSen, lBan;
 	
 
-	public Login() 
+	public Login(ResourceBundle resourceBundle) 
 	{
-		super("Login");
+		super(resourceBundle.getString("Login.titulo"));
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -24,14 +25,14 @@ public class Login extends JFrame implements ActionListener {
 		JPanel controlField = new JPanel(new GridLayout( 0, 1, 3, 3));
 
 		//Organizar itens no layout
-		bEnt = new JButton("Entrar");
+		bEnt = new JButton(resourceBundle.getString("Login.entrar"));
 		tAg = new JTextField(15);
 		tCont = new JTextField(15);
 		tSen = new JTextField(15);
-		lAg = new JLabel("Agência");
-		lCont = new JLabel("Conta");
-		lSen = new JLabel("Senha");
-		lBan = new JLabel("Banco");
+		lAg = new JLabel(resourceBundle.getString("Login.agencia"));
+		lCont = new JLabel(resourceBundle.getString("Login.conta"));
+		lSen = new JLabel(resourceBundle.getString("Login.senha"));
+		lBan = new JLabel(resourceBundle.getString("Login.banco"));
 		JComboBox<String> Cban = new JComboBox<String> ();
 		Cban.addItem("");
 		Cban.addItem("Itau");
@@ -55,7 +56,7 @@ public class Login extends JFrame implements ActionListener {
 		control.add(bEnt);
 		
 		JPanel gui = new JPanel(new BorderLayout(10,10));
-        gui.setBorder(new TitledBorder("Bem Vindo"));
+        gui.setBorder(new TitledBorder(resourceBundle.getString("BemVindo")));
         gui.add(controlInput, BorderLayout.CENTER);
         gui.add(control, BorderLayout.SOUTH);
        
