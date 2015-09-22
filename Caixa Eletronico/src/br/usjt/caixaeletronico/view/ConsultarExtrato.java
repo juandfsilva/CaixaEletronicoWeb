@@ -7,9 +7,9 @@ import br.usjt.caixaeletronico.model.Extrato;
 
 public class ConsultarExtrato extends ConsultarTemplate {
 	
-	private static String[] buttonsText = { Messages.getString("ConsultarExtrato.0"), Messages.getString("ConsultarExtrato.1"), Messages.getString("ConsultarExtrato.2") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+	private static String[] buttonsText = { "Voltar", "Extrato", "Imprimir" };
 	public ConsultarExtrato(String periodo, int days) {
-		super(periodo, Messages.getString("ConsultarExtrato.3"), buttonsText, 1); //$NON-NLS-1$
+		super(periodo, "Extrato", buttonsText, 1);
 		String text = Extrato.getExtrato(days);
 		tA.setText(text);
 		

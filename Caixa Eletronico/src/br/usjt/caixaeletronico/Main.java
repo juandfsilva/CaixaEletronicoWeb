@@ -30,10 +30,10 @@ public class Main {
 			new MenuPrinc(),
 			new AdmLogin(),
 			new CadastroDebitoAutom(),
-			new ConsultarExtrato("7", 7), //$NON-NLS-1$
+			new ConsultarExtrato("7", 7),
 			new ConsultarSaldo(),
 			new Login(),
-			new Mensagem("Relatorio de Notas", Dispenser.getRelatorioNotas()), //$NON-NLS-1$
+			new Mensagem("Relatorio Notas", Dispenser.getRelatorioNotas()),
 			new OutroSaq(),
 			new PeriodoExtrato(),
 			new Saque(),

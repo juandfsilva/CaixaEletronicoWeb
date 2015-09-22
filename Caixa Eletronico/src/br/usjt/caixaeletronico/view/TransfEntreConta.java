@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 public class TransfEntreConta extends CadTransfTemplate {
 
-	private static String[] buttonsText = { Messages.getString("TransfEntreConta.0"), Messages.getString("TransfEntreConta.1") }; //$NON-NLS-1$ //$NON-NLS-2$
-	private static String[] labelsText = { Messages.getString("TransfEntreConta.2"), Messages.getString("TransfEntreConta.3"), Messages.getString("TransfEntreConta.4") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+	private static String[] buttonsText = { "Cadastrar", "Voltar" };
+	private static String[] labelsText = { "Conta:", "Agência:", "Quantia:" };
 
 	public TransfEntreConta() {
 		// TODO Auto-generated constructor stub
-		super(Messages.getString("TransfEntreConta.5"), Messages.getString("TransfEntreConta.6"), labelsText, buttonsText); //$NON-NLS-1$ //$NON-NLS-2$
+		super("Transferência Entre Contas", "Transferência", labelsText, buttonsText);
 
 		// Transferir
 		buttons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Mensagem msg = new Mensagem(Messages.getString("TransfEntreConta.7"), Messages.getString("TransfEntreConta.8")); //$NON-NLS-1$ //$NON-NLS-2$
+				Mensagem msg = new Mensagem("Cadastro Débito Automático", "Cadastro Realizado com sucesso!!");
 				msg.setVisible(true);
 				dispose();
 			}
