@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.*;
@@ -26,9 +27,9 @@ public class InterClass extends JFrame{
 	}
 	public InterClass(int selectedRb) {
 		//TODO(anyone): crie os properties e preencha os getBundle abaixo;
-		rbList.add(new Par("Portugues", ResourceBundle.getBundle("messages.properties")));
-		rbList.add(new Par("Ingles", ResourceBundle.getBundle("messages.properties")));
-		rbList.add(new Par("Espanhol", ResourceBundle.getBundle("messages.properties")));
+		rbList.add(new Par("Portugues", ResourceBundle.getBundle("messages", new Locale("pt", "BR"))));
+		rbList.add(new Par("Ingles", 	ResourceBundle.getBundle("messages", new Locale("en", "US"))));
+		rbList.add(new Par("Espanhol", 	ResourceBundle.getBundle("messages", new Locale("es", "ES"))));
 		JPanel bPanel = new JPanel(new GridLayout(3, 1));
 		for(int i = 0, s = rbList.size(); i < s; ++i)
 		{
