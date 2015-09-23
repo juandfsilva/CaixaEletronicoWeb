@@ -36,8 +36,8 @@ public class Main {
 				new ConsultarExtrato(rb, "7", 7),
 				new ConsultarSaldo(rb),
 				new Login(rb),
-				new Mensagem(rb, "Relatorio Notas",
-						Dispenser.getRelatorioNotas()), new OutroSaq(rb),
+				new Mensagem(rb, rb.getString("Dispenser.relatorio"),
+						Dispenser.getRelatorioNotas(rb)), new OutroSaq(rb),
 				new PeriodoExtrato(rb), new Saque(rb), new TransfEntreConta(rb) };
 		for (int i = 0; i < views.length; ++i) {
 			views[i].setVisible(false);

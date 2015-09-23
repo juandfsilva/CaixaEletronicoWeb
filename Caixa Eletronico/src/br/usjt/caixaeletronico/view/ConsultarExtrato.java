@@ -12,7 +12,7 @@ public class ConsultarExtrato extends ConsultarTemplate {
 		super(periodo, resourceBundle.getString("Extrato.desc"), new String[] {
 				resourceBundle.getString("Voltar"), resourceBundle.getString("Extrato"),
 				resourceBundle.getString("Imprimir") }, 1);
-		String text = Extrato.getExtrato(days);
+		String text = Extrato.getExtrato(resourceBundle, days);
 		tA.setText(text);
 
 		// Button voltar

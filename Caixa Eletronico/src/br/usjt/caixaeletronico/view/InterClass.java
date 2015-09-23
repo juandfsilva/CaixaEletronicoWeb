@@ -13,7 +13,7 @@ import javax.swing.border.TitledBorder;
 import br.usjt.caixaeletronico.Main;
 
 public class InterClass extends JFrame{
-	private ArrayList<JButton> bLangs = new ArrayList<JButton>();
+	//private ArrayList<JButton> bLangs = new ArrayList<JButton>();
 	private static class Par {
 		Par(String nome, ResourceBundle rb) {
 			this.nome = nome;
@@ -22,14 +22,16 @@ public class InterClass extends JFrame{
 		String nome;
 		ResourceBundle rb;
 	}
-	ArrayList<Par> rbList = new ArrayList<Par>();
-	public InterClass() {
-	}
-	public InterClass(int selectedRb) {
-		//TODO(anyone): crie os properties e preencha os getBundle abaixo;
+	private static ArrayList<Par> rbList = new ArrayList<Par>();
+	static {
 		rbList.add(new Par("Portugues", ResourceBundle.getBundle("messages", new Locale("pt", "BR"))));
 		rbList.add(new Par("Ingles", 	ResourceBundle.getBundle("messages", new Locale("en", "US"))));
 		rbList.add(new Par("Espanhol", 	ResourceBundle.getBundle("messages", new Locale("es", "ES"))));
+	}
+	public InterClass() {
+	}
+	public InterClass(int selectedRb) {
+		super(rbList.get(selectedRb).rb.getString("Idioma.Idioma"));
 		JPanel bPanel = new JPanel(new GridLayout(3, 1));
 		for(int i = 0, s = rbList.size(); i < s; ++i)
 		{
@@ -40,22 +42,20 @@ public class InterClass extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					Main.start(rbList.get(index).rb);
+					setVisible(false);
 				}
 			});
-			bLangs.add(b);
+			//bLangs.add(b);
 			bPanel.add(b);
 		}
 		bPanel.setBorder(new TitledBorder(rbList.get(selectedRb).rb.getString("Idioma.Escolha")));
 
-		JFrame inter = new JFrame(rbList.get(selectedRb).rb.getString("Idioma.Idioma"));
-		inter.setContentPane(bPanel);
+		setContentPane(bPanel);
 
-		inter.setResizable(false);
-		inter.setSize(250, 250);
-		inter.setVisible(true);
-		inter.setLocationRelativeTo(null);
-		inter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		setResizable(false);
+		setSize(250, 250);
+		setVisible(true);
+		setLocationRelativeTo(null);
 	}
 
 }
