@@ -14,13 +14,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
 public class ConsultarSaldo extends ConsultarTemplate {
-	String text = "Agencia: 0000-00\nConta: 000000-00\nData:21/12/2012\n\nSaldo atual: R$-1000,00";
 
 	public ConsultarSaldo(ResourceBundle resourceBundle) {
 		super(resourceBundle.getString("Saldo.titulo"), resourceBundle
 				.getString("Saldo.desc"), new String[] {
 				resourceBundle.getString("Voltar"), resourceBundle.getString("Extrato"),
 				resourceBundle.getString("Imprimir") }, 0);
-		tA.setText(text);
+		tA.setText(resourceBundle.getString("Login.agencia") + ": " + "0000-00\n"+
+				resourceBundle.getString("Login.conta") + ": " + "000000-00\n"+
+				resourceBundle.getString("Saldo.data") + ": " + "21/12/2012\n\n"+
+				resourceBundle.getString("Saldo.titulo") + ": " + "R$-1000,00");
 	}
 }

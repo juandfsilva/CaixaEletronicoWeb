@@ -11,7 +11,7 @@ public class Extrato {
 				resourceBundle.getString("Extrato.totalCreditos") + " ----------------------6.500,00\n"+
 				resourceBundle.getString("Extrato.TransferenciasIN") + " -------------500,00\n"+
 				resourceBundle.getString("Extrato.salario") + " --------------------4.000,00\n"+
-				resourceBundle.getString("Extrato.restituição") + " --------500,00\n"+
+				resourceBundle.getString("Extrato.restituicao") + " --------500,00\n"+
 				resourceBundle.getString("Extrato.outrosCreditos") + " ------------------------1.500,00\n"+
 				resourceBundle.getString("Extrato.totalDebitos") + " -----------------------9.081,43\n"+
 				resourceBundle.getString("Extrato.saques") + " -----------------------50,00\n"+
