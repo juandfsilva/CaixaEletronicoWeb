@@ -11,6 +11,7 @@ import br.usjt.caixaeletronico.view.AdmLogin;
 import br.usjt.caixaeletronico.view.CadastroDebitoAutom;
 import br.usjt.caixaeletronico.view.ConsultarExtrato;
 import br.usjt.caixaeletronico.view.ConsultarSaldo;
+import br.usjt.caixaeletronico.view.CriaUsuarios;
 import br.usjt.caixaeletronico.view.InterClass;
 import br.usjt.caixaeletronico.view.Login;
 import br.usjt.caixaeletronico.view.Mensagem;
@@ -23,12 +24,17 @@ import br.usjt.caixaeletronico.view.TransfEntreConta;
 public class Main {
 
 	public static void main(String[] args) {
-		InterClass ic = new InterClass(0);
+		InterClass ic = new InterClass();
 		ic.setVisible(true);
 		ic.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void start(ResourceBundle rb) {
+		//JFrame view = new Login(rb);
+		JFrame view = new CriaUsuarios();
+		view.setVisible(true);
+		view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		/*
 		final JFrame[] views = {
 				new MenuPrinc(rb),
 				new AdmLogin(rb),
@@ -80,7 +86,7 @@ public class Main {
 				}
 			});
 		}
-		views[0].setVisible(true);
+		views[0].setVisible(true);*/
 
 		/*
 		 * JFrame msg = new Mensagem("Relatorio Notas",

@@ -29,6 +29,7 @@ public class InterClass extends JFrame{
 		rbList.add(new Par("Espanhol", 	ResourceBundle.getBundle("messages", new Locale("es", "ES"))));
 	}
 	public InterClass() {
+		this(0);
 	}
 	public InterClass(int selectedRb) {
 		super(rbList.get(selectedRb).rb.getString("Idioma.Idioma"));
@@ -42,7 +43,7 @@ public class InterClass extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					Main.start(rbList.get(index).rb);
-					setVisible(false);
+					InterClass.this.dispose();
 				}
 			});
 			//bLangs.add(b);
@@ -54,7 +55,6 @@ public class InterClass extends JFrame{
 
 		setResizable(false);
 		setSize(250, 250);
-		setVisible(true);
 		setLocationRelativeTo(null);
 	}
 
