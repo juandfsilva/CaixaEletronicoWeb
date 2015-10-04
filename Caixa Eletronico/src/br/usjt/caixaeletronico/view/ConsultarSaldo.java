@@ -21,7 +21,7 @@ public class ConsultarSaldo extends ConsultarTemplate {
 				resourceBundle.getString("Voltar"), resourceBundle.getString("Extrato"),
 				resourceBundle.getString("Imprimir") }, 0);
 		tA.setText(resourceBundle.getString("Login.agencia") + ": " + "0000-00\n"+
-				resourceBundle.getString("Login.conta") + ": " + "000000-00\n"+
+				resourceBundle.getString("Login.conta") + ": " + "000000-0\n"+
 				resourceBundle.getString("Saldo.data") + ": " + "21/12/2012\n\n"+
 				resourceBundle.getString("Saldo.titulo") + ": " + "R$-1000,00");
 	}
