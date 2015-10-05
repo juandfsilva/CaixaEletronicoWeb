@@ -15,13 +15,17 @@ public class SaldoDAO {
 
 	public double getSaldo() {
 		try {
+			double saldot = 0;
 			ConnectionFactory.openFactory();
-			SQL = "select * from sis_bancario.conta where con_conta ="+Utils.objConta.getConta()+
-					"and con_agencia ="+Utils.objConta.getAgencia()+";";
 			stm = (Statement) ConnectionFactory.conn.createStatement();
+			SQL = "select con_saldo from sis_bancario.conta where con_conta="+Utils.objConta.getConta()+
+					" AND con_agencia="+Utils.objConta.getAgencia()+";";
 			rs = stm.executeQuery(SQL);
+			while ( rs.next() ) {
+				saldot = rs.getDouble("con_saldo");
+            }
 			ConnectionFactory.closeFactory();
-			return rs.getDouble("con_saldo");
+			return saldot;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return -123456;

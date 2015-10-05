@@ -35,7 +35,8 @@ public class Conta {
 
 	public double getSaldo() {
 		SaldoDAO saldoDAO = new SaldoDAO();
-		return saldoDAO.getSaldo();
+		double saldot = saldoDAO.getSaldo();
+		return saldot;
 	}
 
 	public int getAgencia() {

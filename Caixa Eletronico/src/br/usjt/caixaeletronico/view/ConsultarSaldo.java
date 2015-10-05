@@ -19,13 +19,47 @@ import br.usjt.caixaeletronico.model.Conta;
 public class ConsultarSaldo extends ConsultarTemplate {
 
 	public ConsultarSaldo(ResourceBundle resourceBundle) {
-		super(resourceBundle.getString("Saldo.titulo"), resourceBundle
-				.getString("Saldo.desc"), new String[] {
-				resourceBundle.getString("Voltar"), resourceBundle.getString("Extrato"),
-				resourceBundle.getString("Imprimir") }, 0);
-		tA.setText(resourceBundle.getString("Login.agencia") + ": " + Utils.objConta.getAgencia()+"\n"+
-				resourceBundle.getString("Login.conta") + ": " + Utils.objConta.getConta() +"\n"+
-				resourceBundle.getString("Saldo.data") + ": " + "21/12/2012\n\n"+
-				resourceBundle.getString("Saldo.titulo") + ": " + "R$" + Utils.objConta.getSaldo());
+		super(resourceBundle.getString("Saldo.titulo"), resourceBundle.getString("Saldo.desc"),
+				new String[] { // Botoes
+						resourceBundle.getString("Voltar"), resourceBundle.getString("Extrato"),
+						resourceBundle.getString("Imprimir") },
+				0);
+		// Texto de dento do Text Area
+		tA.setText(resourceBundle.getString("Login.agencia") + ": " + Utils.objConta.getAgencia() + "\n"
+				+ resourceBundle.getString("Login.conta") + ": " + Utils.objConta.getConta() + "\n"
+				+ resourceBundle.getString("Saldo.data") + ": " + Utils.data.getData() + "\n\n"
+				+ resourceBundle.getString("Saldo.titulo") + ": " + resourceBundle.getString("UnidadeMonetaria")
+				+ Utils.objConta.getSaldo());
+
+		final JFrame actual = this;
+
+		super.buttons[0].addActionListener(new ActionListener() {// Botão Voltar
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+				MenuPrinc menuPrinc = new MenuPrinc(Utils.resource);
+			}
+		});
+
+		super.buttons[1].addActionListener(new ActionListener() {// Botão
+																	// Extrato
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		super.buttons[2].addActionListener(new ActionListener() {// Botão
+																	// Imprimir
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
 }
