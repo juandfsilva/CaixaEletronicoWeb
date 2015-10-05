@@ -10,19 +10,11 @@ import com.mysql.jdbc.Statement;
 
 public class ConnectionFactory {
 	static Connection conn = null;
-	static String url;
-	static String dbName;
-	static String driver;
-	static String userName;
-	static String password;
-
-	public ConnectionFactory() {
-		url = "jdbc:mysql://localhost:3306/";
-		dbName = "sis_bancario";
-		driver = "com.mysql.jdbc.Driver";
-		userName = "root";
-		password = "root";
-	}
+	static String url = "jdbc:mysql://localhost:8080/";//8080 na maquina da KPIT, 3306 em casa
+	static String dbName = "sis_bancario";                                                    
+	static String driver = "com.mysql.jdbc.Driver";                                           
+	static String userName = "root";                                                          
+	static String password = "root";                                                          
 
 	public static void openFactory() {
 		try {

@@ -18,6 +18,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
 import br.usjt.caixaeletronico.control.LoginCtrl;
+import br.usjt.caixaeletronico.control.Utils;
 
 public class Login extends JFrame {
 
@@ -42,7 +43,6 @@ public class Login extends JFrame {
 		AGENCY.setValidCharacters("0123456789");
 		ACCOUNT.setValidCharacters("0123456789");
 		loginCtrl = new LoginCtrl(this);
-
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -50,6 +50,7 @@ public class Login extends JFrame {
 		// controlar TextField
 		JPanel controlField = new JPanel(new GridLayout(0, 1, 3, 3));
 
+		MenuPrinc menu = new MenuPrinc(Utils.resource);
 		// Organizar itens no layout
 		bEnt = new JButton(resourceBundle.getString("Login.entrar"));
 		bEnt.addActionListener(new ActionListener() {
@@ -59,7 +60,12 @@ public class Login extends JFrame {
 				String senha = new String(pass);
 				String agencia = tAg.getText().replace("-", "");
 				String conta = tCont.getText().replace("-", "");
-				loginCtrl.entrar(agencia, conta, senha);
+				boolean next = loginCtrl.entrar(agencia, conta, senha);
+				if(next){
+					menu.setVisible(next);
+					next = false;
+					actual.dispose();
+				}
 			}
 		});
 

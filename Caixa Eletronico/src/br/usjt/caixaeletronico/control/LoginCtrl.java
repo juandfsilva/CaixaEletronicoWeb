@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 import com.sun.xml.internal.bind.v2.TODO;
 
+import br.usjt.caixaeletronico.model.ConnectionFactory;
 import br.usjt.caixaeletronico.model.Conta;
 import br.usjt.caixaeletronico.model.Usuario;
 import br.usjt.caixaeletronico.view.Login;
@@ -25,7 +26,7 @@ public class LoginCtrl {
 		this.loginView = loginView;
 	}
 
-	public void entrar(String agencia, String conta, String senha) {
+	public boolean entrar(String agencia, String conta, String senha) {
 		try {
 			Path path = Paths.get("logins.txt");
 			byte[] data = Files.readAllBytes(path);
@@ -51,17 +52,17 @@ public class LoginCtrl {
 				JOptionPane.showMessageDialog(null, "Usuario não existente");
 			}
 			if (user.getSenha().equals(senha)) {
-				JOptionPane.showMessageDialog(null, "Senha correta!");
 				Utils.objConta.setAgencia(Integer.parseInt(agencia));
 				Utils.objConta.setConta(Integer.parseInt(conta));
 				Utils.objConta.setSaldo(0.00);
-				loginView.dispose();
+				return true;
 			} else {
 				JOptionPane.showMessageDialog(null, "Senha incorreta!");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 	public Usuario buscar(Usuario[] users, String agencia, String conta) {

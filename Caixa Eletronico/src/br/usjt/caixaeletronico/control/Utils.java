@@ -5,8 +5,8 @@ import java.util.ResourceBundle;
 import br.usjt.caixaeletronico.model.Conta;
 
 public class Utils {
-	public static Conta objConta;
-	public static ResourceBundle resource;
+	public static Conta objConta = new Conta();
+	public static ResourceBundle resource = null;
 	
 	
 	public static void setBundle(ResourceBundle rb){

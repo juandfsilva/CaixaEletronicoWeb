@@ -2,16 +2,18 @@ create database sis_bancario;
 use sis_bancario;
 
 CREATE TABLE cliente(
-cli_conta integer(7) UNIQUE,
+cli_id integer(7) UNIQUE,
 cli_nome varchar(45) NOT NULL,
 cli_tipo integer(3)
 );
 
 CREATE TABLE conta(
+cli_id integer(7) NOT NULL,
 con_conta integer(7) UNIQUE NOT NULL,
 con_agencia integer(6) NOT NULL,
 con_senha integer(4)NOT NULL,
 con_codAcesso integer(3),
+con_banco varchar(15) NOT NULL,
 con_saldo decimal(15,2) null default '0.00'
 );
 
@@ -26,7 +28,7 @@ mov_valor decimal(15,2) default '0.00'
 );
 
 CREATE TABLE log(
-log_cod integer(7) UNIQUE auto_increment,
+log_cod integer(7) UNIQUE AUTO_INCREMENT,
 log_movCod integer(6) NOT NULL,
 log_conDebito integer(7) NOT NULL,
 log_agencia integer(6) NOT NULL,
