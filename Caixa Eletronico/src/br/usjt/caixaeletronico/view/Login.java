@@ -1,18 +1,23 @@
 package br.usjt.caixaeletronico.view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.ResourceBundle;
 
-import javax.sound.sampled.Control;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
 import br.usjt.caixaeletronico.control.LoginCtrl;
-import br.usjt.caixaeletronico.control.Utils;
 
 public class Login extends JFrame {
 
@@ -54,7 +59,7 @@ public class Login extends JFrame {
 				String senha = new String(pass);
 				String agencia = tAg.getText().replace("-", "");
 				String conta = tCont.getText().replace("-", "");
-				boolean login = loginCtrl.entrar(agencia, conta, senha);
+				loginCtrl.entrar(agencia, conta, senha);
 			}
 		});
 

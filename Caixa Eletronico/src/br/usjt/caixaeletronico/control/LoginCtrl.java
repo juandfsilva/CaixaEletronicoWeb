@@ -20,13 +20,12 @@ import br.usjt.caixaeletronico.view.Login;
 
 public class LoginCtrl {
 	Login loginView;
-	boolean next = false;
 
 	public LoginCtrl(Login loginView) {
 		this.loginView = loginView;
 	}
 
-	public boolean entrar(String agencia, String conta, String senha) {
+	public void entrar(String agencia, String conta, String senha) {
 		try {
 			Path path = Paths.get("logins.txt");
 			byte[] data = Files.readAllBytes(path);
@@ -57,14 +56,12 @@ public class LoginCtrl {
 				Utils.objConta.setConta(Integer.parseInt(conta));
 				Utils.objConta.setSaldo(0.00);
 				loginView.dispose();
-				next = true;
 			} else {
 				JOptionPane.showMessageDialog(null, "Senha incorreta!");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return next;
 	}
 
 	public Usuario buscar(Usuario[] users, String agencia, String conta) {
