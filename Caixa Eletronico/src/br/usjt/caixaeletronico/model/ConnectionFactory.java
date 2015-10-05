@@ -10,12 +10,21 @@ import com.mysql.jdbc.Statement;
 
 public class ConnectionFactory {
 	static Connection conn = null;
+	static String url;
+	static String dbName;
+	static String driver;
+	static String userName;
+	static String password;
+
 	public ConnectionFactory() {
-		String url = "jdbc:mysql://localhost:3306/";
-		String dbName = "sis_bancario";
-		String driver = "com.mysql.jdbc.Driver";
-		String userName = "root";
-		String password = "root";
+		url = "jdbc:mysql://localhost:3306/";
+		dbName = "sis_bancario";
+		driver = "com.mysql.jdbc.Driver";
+		userName = "root";
+		password = "root";
+	}
+
+	public static void openFactory() {
 		try {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(url + dbName, userName, password);
@@ -23,10 +32,9 @@ public class ConnectionFactory {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	public void closeFactory() {
+	public static void closeFactory() {
 		try {
 			conn.close();
 			System.out.println("Fechado!!");
