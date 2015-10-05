@@ -14,7 +14,7 @@ con_agencia integer(6) NOT NULL,
 con_senha integer(4)NOT NULL,
 con_codAcesso integer(3),
 con_banco varchar(15) NOT NULL,
-con_saldo decimal(15,2) null default '0.00'
+con_saldo double(15,2) null default '0.00'
 );
 
 CREATE TABLE movimentacao(
