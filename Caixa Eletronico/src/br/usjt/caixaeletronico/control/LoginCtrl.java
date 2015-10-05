@@ -12,22 +12,27 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
+import br.usjt.caixaeletronico.model.Conta;
 import br.usjt.caixaeletronico.model.Usuario;
 import br.usjt.caixaeletronico.view.Login;
 
 public class LoginCtrl {
 	Login loginView;
+	boolean next = false;
+
 	public LoginCtrl(Login loginView) {
 		this.loginView = loginView;
 	}
-	public void entrar(String agencia, String conta, String senha) {
+
+	public boolean entrar(String agencia, String conta, String senha) {
 		try {
 			Path path = Paths.get("logins.txt");
 			byte[] data = Files.readAllBytes(path);
 			String decifrado = null;
 			try {
-				ObjectInputStream ois = new ObjectInputStream(
-						new FileInputStream("chave.txt"));
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream("chave.txt"));
 				SecretKeySpec iSim = (SecretKeySpec) ois.readObject();
 
 				ois.close();
@@ -38,47 +43,46 @@ public class LoginCtrl {
 				decifrado = new String(aescf.doFinal(data));
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null,
-						"Falha ao ler arquivo criptografado.\n" + e.toString());
-				return;
+				JOptionPane.showMessageDialog(null, "Falha ao ler arquivo criptografado.\n" + e.toString());
 			}
 			String[] linhas = decifrado.split("\n");
 			Usuario[] users = Usuario.converterLinhas(linhas);
 			Usuario user = buscar(users, agencia, conta);
-			if(user == null) {
+			if (user == null) {
 				JOptionPane.showMessageDialog(null, "Usuario não existente");
-				return;
 			}
-			if(user.getSenha().equals(senha))
-			{
+			if (user.getSenha().equals(senha)) {
 				JOptionPane.showMessageDialog(null, "Senha correta!");
-			}
-			else
-			{
+				Utils.objConta.setAgencia(Integer.parseInt(agencia));
+				Utils.objConta.setConta(Integer.parseInt(conta));
+				Utils.objConta.setSaldo(0.00);
+				loginView.dispose();
+				next = true;
+			} else {
 				JOptionPane.showMessageDialog(null, "Senha incorreta!");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return next;
 	}
+
 	public Usuario buscar(Usuario[] users, String agencia, String conta) {
 		Usuario ret = null;
-		int ini = 0, fim = users.length-1;
-		while(ini <= fim) {
-			int i = (ini+fim) / 2;
+		int ini = 0, fim = users.length - 1;
+		while (ini <= fim) {
+			int i = (ini + fim) / 2;
 			int comp = users[i].comparar(agencia, conta);
-			if(comp < 0) //users[i] é menor que o procurado
+			if (comp < 0) // users[i] é menor que o procurado
 			{
-				ini = i+1;
-			}
-			else if(comp > 0) //users[i] é maior que o procurado
+				ini = i + 1;
+			} else if (comp > 0) // users[i] é maior que o procurado
 			{
-				fim = i -1;
-			}
-			else if(comp == 0) return users[i]; //é igual
+				fim = i - 1;
+			} else if (comp == 0)
+				return users[i]; // é igual
 		}
-		
+
 		return ret;
 	}
 

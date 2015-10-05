@@ -1,14 +1,18 @@
 package br.usjt.caixaeletronico.view;
 
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
+import org.jcp.xml.dsig.internal.dom.Utils;
 
 import br.usjt.caixaeletronico.Main;
 
@@ -43,6 +47,7 @@ public class InterClass extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					Main.start(rbList.get(index).rb);
+					br.usjt.caixaeletronico.control.Utils.setBundle(rbList.get(index).rb);
 					InterClass.this.dispose();
 				}
 			});

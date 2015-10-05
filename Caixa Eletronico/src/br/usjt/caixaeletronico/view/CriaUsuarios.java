@@ -27,12 +27,14 @@ import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.SingleSelectionModel;
+import br.usjt.caixaeletronico.model.ConnectionFactory;
 
 import br.usjt.caixaeletronico.model.Usuario;
 
 public class CriaUsuarios extends JFrame {
 	JList list;
 	ArrayList<Usuario> data;
+	ConnectionFactory fac;
 	class ModeloListaUsuarios extends AbstractListModel<Usuario> {
 		@Override
 		public Usuario getElementAt(int v) {
@@ -64,9 +66,9 @@ public class CriaUsuarios extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String agencia = JOptionPane.showInputDialog(null,
-						"Digite a agência no formato 0000-00");
+						"Digite a agência no formato 000000(6digitos)");
 				String conta = JOptionPane.showInputDialog(null,
-						"Digite a conta no formato 000000-0");
+						"Digite a conta no formato 0000000(7digitos)");
 				String senha = JOptionPane.showInputDialog(null,
 						"Digite uma senha");
 				Usuario usr = new Usuario(agencia, conta, senha);
@@ -95,6 +97,29 @@ public class CriaUsuarios extends JFrame {
 			}
 		});
 		add(b);
+
+		b = new JButton("Conecta");
+		b.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				fac = new ConnectionFactory();
+			}
+		});
+		add(b);
+		
+		b = new JButton("fecha");
+		b.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				fac.closeFactory();
+			}
+		});
+		add(b);
+		
 		setSize(800, 600);
 	}
 
