@@ -18,7 +18,7 @@ import br.usjt.caixaeletronico.model.Conta;
 
 public class ConsultarSaldo extends ConsultarTemplate {
 
-	public ConsultarSaldo(ResourceBundle resourceBundle) {
+	public ConsultarSaldo(final ResourceBundle resourceBundle) {
 		super(resourceBundle.getString("Saldo.titulo"), resourceBundle.getString("Saldo.desc"),
 				new String[] { // Botoes
 						resourceBundle.getString("Voltar"), resourceBundle.getString("Extrato"),
@@ -38,7 +38,8 @@ public class ConsultarSaldo extends ConsultarTemplate {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				actual.dispose();
-				MenuPrinc menuPrinc = new MenuPrinc(Utils.resource);
+				MenuPrinc menuPrinc = new MenuPrinc(resourceBundle);
+				menuPrinc.setVisible(true);
 			}
 		});
 

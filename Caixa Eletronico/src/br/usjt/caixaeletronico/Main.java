@@ -34,6 +34,7 @@ public class Main {
 		JFrame view = new Login(rb);
 		//JFrame view = new CriaUsuarios();
 		ConnectionFactory conn = new ConnectionFactory();
+		ConnectionFactory.openFactory();
 		view.setVisible(true);
 		view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		/*

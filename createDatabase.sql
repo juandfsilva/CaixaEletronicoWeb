@@ -2,7 +2,7 @@ create database sis_bancario;
 use sis_bancario;
 
 CREATE TABLE cliente(
-cli_id integer(7) UNIQUE,
+cli_id integer(7) UNIQUE, auto_increment
 cli_nome varchar(45) NOT NULL,
 cli_tipo integer(3)
 );

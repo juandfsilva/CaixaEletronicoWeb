@@ -34,7 +34,7 @@ public class Conta {
 	}
 
 	public double getSaldo() {
-		SaldoDAO saldoDAO = new SaldoDAO();
+		ContaDAO saldoDAO = new ContaDAO();
 		double saldot = saldoDAO.getSaldo();
 		return saldot;
 	}
@@ -69,7 +69,13 @@ public class Conta {
 
 
 	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+		try{
+		ContaDAO saldoDAO = new ContaDAO();
+		saldoDAO.setSaldo(saldo);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void setConta(int conta) {
