@@ -50,7 +50,7 @@ public class Login extends JFrame {
 		// controlar TextField
 		JPanel controlField = new JPanel(new GridLayout(0, 1, 3, 3));
 
-		MenuPrinc menu = new MenuPrinc(Utils.resource);
+		final MenuPrinc menu = new MenuPrinc(resourceBundle);
 		// Organizar itens no layout
 		bEnt = new JButton(resourceBundle.getString("Login.entrar"));
 		bEnt.addActionListener(new ActionListener() {

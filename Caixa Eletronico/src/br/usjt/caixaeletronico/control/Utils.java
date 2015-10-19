@@ -9,14 +9,5 @@ import br.usjt.caixaeletronico.model.Data;
 
 public class Utils {
 	public static Conta objConta = new Conta();
-	public static ResourceBundle resource = null;
-	public static Data data = new Data(); 
-	
-	public static void setBundle(ResourceBundle rb){
-		resource = rb;
-	}
-	
-	public static ResourceBundle getBundle(){
-		return resource;
-	}
+	public static Data data = new Data();
 }

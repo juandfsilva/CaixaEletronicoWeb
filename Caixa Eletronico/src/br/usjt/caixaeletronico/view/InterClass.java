@@ -46,8 +46,7 @@ public class InterClass extends JFrame{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					br.usjt.caixaeletronico.control.Utils.setBundle(rbList.get(selectedRb).rb);
-					Main.start(rbList.get(selectedRb).rb);
+					Main.start(rbList.get(index).rb);
 					InterClass.this.dispose();
 				}
 			});

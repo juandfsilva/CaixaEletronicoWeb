@@ -72,10 +72,12 @@ public class CriaUsuarios extends JFrame {
 				String senha = JOptionPane.showInputDialog(null,
 						"Digite uma senha");
 				Usuario usr = new Usuario(agencia, conta, senha);
-				int index = 0;
+				int s = data.size();
+				int index = s;
 				// procura lugar onde deve ficar na lista
-				for (int i = 0, s = data.size(); i < s; ++i) {
-					if (data.get(i).comparar(usr) > 0) {
+				for (int i = 0; i < s; ++i) {
+					int res = data.get(i).comparar(usr);
+					if (res > 0) {
 						index = i;
 						break;
 					}
@@ -92,7 +94,7 @@ public class CriaUsuarios extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// ordena a lista pra ter certeza que está ordenada, depois
 				// salva ela no arquivo de texto encriptografado
-				ordena();
+				//ordena();
 				salva();
 			}
 		});
@@ -109,24 +111,47 @@ public class CriaUsuarios extends JFrame {
 		});
 		add(b);
 		
-		b = new JButton("fecha");
-		b.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				fac.closeFactory();
-			}
-		});
-		add(b);
-		
 		setSize(800, 600);
 	}
-
-	void ordena() {
-
+	void ordena()
+	{
+		ordena(0, data.size() - 1);
 	}
-
+	//quickSort
+	void ordena(int ini, int fim) {
+		if (data == null || data.size() == 0)
+			return;
+ 
+		if (ini >= fim)
+			return;
+ 
+		// pick the pivot
+		int meio = ini + (fim - ini) / 2;
+		Usuario pivot = data.get(meio);
+ 
+		// make left < pivot and right > pivot
+		int i = ini, j = fim;
+		while (i <= j) {
+			Usuario ui = data.get(i), uj = data.get(j);
+			while (ui.comparar(pivot) < 0)
+				i++;
+ 
+			while (uj.comparar(pivot) < 0)
+				j--;
+ 
+			if (i <= j) {
+				data.set(i, uj);
+				data.set(j, ui);
+				i++; j--;
+			}
+		}
+		
+		if (ini < j)
+			ordena(ini, j);
+ 
+		if (fim > i)
+			ordena(i, fim);	
+	}
 	void le() {
 		Path caminhoLogins = Paths.get("logins.txt");
 		if (!Files.exists(caminhoLogins))

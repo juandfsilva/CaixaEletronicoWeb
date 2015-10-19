@@ -6,11 +6,10 @@ import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 
-import br.usjt.caixaeletronico.control.Utils;
 
 public class MenuPrinc extends MenuTemplate {
 
-	public MenuPrinc(ResourceBundle resourceBundle) {
+	public MenuPrinc(final ResourceBundle resourceBundle) {
 		super(resourceBundle.getString("Menu.titulo"),//Titulo
 				resourceBundle.getString("0"), //Descricao
 				new String[] {//array de botoes
@@ -23,7 +22,7 @@ public class MenuPrinc extends MenuTemplate {
 		final JFrame actual = this;
 		super.buttons[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConsultarSaldo saldo = new ConsultarSaldo(Utils.resource);
+				ConsultarSaldo saldo = new ConsultarSaldo(resourceBundle);
 				saldo.setVisible(true);
 				actual.dispose();
 			}
