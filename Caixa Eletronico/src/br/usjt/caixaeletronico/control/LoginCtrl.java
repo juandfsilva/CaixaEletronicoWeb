@@ -54,7 +54,7 @@ public class LoginCtrl {
 			if (user.getSenha().equals(senha)) {
 				Utils.objConta.setAgencia(Integer.parseInt(agencia));
 				Utils.objConta.setConta(Integer.parseInt(conta));
-				Utils.objConta.setSaldo(0.00);
+				Utils.objConta.setSaldo(Utils.objConta.getSaldo());
 				return true;
 			} else {
 				JOptionPane.showMessageDialog(null, "Senha incorreta!");

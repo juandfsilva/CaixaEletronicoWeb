@@ -1,9 +1,12 @@
 package br.usjt.caixaeletronico.model;
 
+import java.util.ResourceBundle;
+
 public class Conta {
 	int conta, agencia, cli_id, cod_acesso;
 	double saldo;
 	String banco;
+	ContaDAO contaDAO = new ContaDAO();
 	
 	public Conta() {
 		cli_id = 0;
@@ -17,10 +20,10 @@ public class Conta {
 	public Conta(int cli_id, int conta, int agencia, int cod_acesso, double saldo, String banco) {
 		setConta(conta);
 		setAgencia(agencia);
-		setSaldo(saldo);
 		setCliCod(cli_id);
 		setBanco(banco);
 		setAcesso(cod_acesso);
+		setSaldo(getSaldo());
 	}
 		
 
@@ -35,7 +38,7 @@ public class Conta {
 
 	public double getSaldo() {
 		ContaDAO saldoDAO = new ContaDAO();
-		double saldot = saldoDAO.getSaldo();
+		double saldot = saldoDAO.getSaldo(getAgencia(), getConta());
 		return saldot;
 	}
 
@@ -70,8 +73,7 @@ public class Conta {
 
 	public void setSaldo(double saldo) {
 		try{
-		ContaDAO saldoDAO = new ContaDAO();
-		saldoDAO.setSaldo(saldo);
+		contaDAO.setSaldo(saldo, getAgencia(), getConta());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -81,4 +83,9 @@ public class Conta {
 	public void setConta(int conta) {
 		this.conta = conta;
 	}
+	
+	public String transferencia(double valor, int agDestino, int acDestino, ResourceBundle resourceBundle){
+		return contaDAO.transferencia(valor, agDestino, acDestino, resourceBundle);
+	}
+	
 }

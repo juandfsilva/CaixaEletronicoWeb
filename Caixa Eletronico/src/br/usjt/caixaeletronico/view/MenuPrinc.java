@@ -28,6 +28,20 @@ public class MenuPrinc extends MenuTemplate {
 			}
 		});
 		
+		super.buttons[4].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TransfEntreConta transf = new TransfEntreConta(resourceBundle);
+				transf.setVisible(true);
+				actual.dispose();
+			}
+		});
+		
+		super.buttons[5].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actual.dispose();
+			}
+		});
+		
 		
 		
 	}
