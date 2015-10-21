@@ -84,8 +84,8 @@ public class Conta {
 		this.conta = conta;
 	}
 	
-	public String transferencia(double valor, int agDestino, int acDestino, ResourceBundle resourceBundle){
-		return contaDAO.transferencia(valor, agDestino, acDestino, resourceBundle);
+	public int transferencia(double valor, int agDestino, int acDestino){
+		return contaDAO.transferencia(valor, agDestino, acDestino);
 	}
 	
 }

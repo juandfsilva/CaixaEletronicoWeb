@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
+import br.usjt.caixaeletronico.control.ContaCtrl;
 import br.usjt.caixaeletronico.control.Utils;
 import br.usjt.caixaeletronico.model.Conta;
 
@@ -24,6 +25,7 @@ public class ConsultarSaldo extends ConsultarTemplate {
 						resourceBundle.getString("Voltar"), resourceBundle.getString("Extrato"),
 						resourceBundle.getString("Imprimir") },
 				0);
+		ContaCtrl ctrl = new ContaCtrl(); 
 		// Texto de dento do Text Area
 		tA.setText(resourceBundle.getString("Login.agencia") + ": " + Utils.objConta.getAgencia() + "\n"
 				+ resourceBundle.getString("Login.conta") + ": " + Utils.objConta.getConta() + "\n"

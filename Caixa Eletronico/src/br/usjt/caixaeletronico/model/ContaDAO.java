@@ -49,8 +49,7 @@ public class ContaDAO {
 		}
 	}
 
-	public String transferencia(double valor, int agDestino, int acDestino, ResourceBundle resourceBundle) {
-		// TODO Mexer nessa bagaça logo!!!
+	public int transferencia(double valor, int agDestino, int acDestino) {
 		double saldo = Utils.objConta.getSaldo();
 		if (verificaCadastro(agDestino, acDestino)) {
 			if (saldo >= valor) {
@@ -62,17 +61,17 @@ public class ContaDAO {
 					Conta accTransf = new Conta(0, acDestino, agDestino, 0, 0, null);
 					double saldoDest = accTransf.getSaldo() + valor;
 					accTransf.setSaldo(saldoDest);
-					return resourceBundle.getString("Transferencia.sucesso");
+					return 1;
 				} catch (Exception e) {
 					e.printStackTrace();
-					return resourceBundle.getString("Transferencia.erro");
+					return -1;
 				}
 
 			} else {
-				return resourceBundle.getString("Transferencia.semSaldo");
+				return 0; //S saldo
 			}
 		} else {
-			return resourceBundle.getString("Transferencia.erro");
+			return -1; //Conta Inexistente
 		}
 	}
 
