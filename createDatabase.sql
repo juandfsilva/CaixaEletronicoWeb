@@ -20,10 +20,9 @@ con_saldo double(15,2) null default '0.00'
 CREATE TABLE movimentacao(
 mov_cod integer(11) UNIQUE auto_increment,
 mov_data date NOT NULL,
-mov_hora time NOT NULL,
-mov_conDebito integer(6) NOT NULL,
-mov_conDestino integer(7),
-mov_codDebito integer(11),
+mov_conta integer(6) NOT NULL,
+mov_agencia integer(6) NOT NULL,
+mov_tipo integer(1),
 mov_valor decimal(15,2) default '0.00'
 );
 

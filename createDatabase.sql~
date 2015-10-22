@@ -2,7 +2,7 @@ create database sis_bancario;
 use sis_bancario;
 
 CREATE TABLE cliente(
-cli_id integer(7) UNIQUE,
+cli_id integer(7) UNIQUE, auto_increment
 cli_nome varchar(45) NOT NULL,
 cli_tipo integer(3)
 );
@@ -20,10 +20,8 @@ con_saldo double(15,2) null default '0.00'
 CREATE TABLE movimentacao(
 mov_cod integer(11) UNIQUE auto_increment,
 mov_data date NOT NULL,
-mov_hora time NOT NULL,
-mov_conDebito integer(6) NOT NULL,
-mov_conDestino integer(7),
-mov_codDebito integer(11),
+mov_conta integer(6) NOT NULL,
+mov_tipo integer(1),
 mov_valor decimal(15,2) default '0.00'
 );
 

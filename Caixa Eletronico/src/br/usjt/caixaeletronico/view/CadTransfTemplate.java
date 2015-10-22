@@ -20,7 +20,6 @@ public class CadTransfTemplate extends JFrame{
 	protected JTextField[] fields;
 	
 	public CadTransfTemplate(String titulo, String descricao, String[] labelsText, String[] buttonsText) {
-		// TODO Auto-generated constructor stub
 		super(titulo);
 		Container c = getContentPane();
 		Container buttonContainer = new Container();

@@ -26,7 +26,7 @@ public class LoginCtrl {
 		this.loginView = loginView;
 	}
 
-	public boolean entrar(String agencia, String conta, String senha) {
+	public boolean entrar(String agencia, String conta, String senha, String banco) {
 		try {
 			Path path = Paths.get("logins.txt");
 			byte[] data = Files.readAllBytes(path);
@@ -55,7 +55,21 @@ public class LoginCtrl {
 				Utils.objConta.setAgencia(Integer.parseInt(agencia));
 				Utils.objConta.setConta(Integer.parseInt(conta));
 				Utils.objConta.setSaldo(Utils.objConta.getSaldo());
-				return true;
+				if(Utils.objConta.verificaBanco(banco)){
+					if(!Utils.objConta.primeiroAcesso()){
+						return true;
+					}else{
+						try{
+							Utils.objConta.setCliCod(Integer.parseInt(JOptionPane.showInputDialog("Digite seu código de acesso que deve conter 3 numeros")));
+							JOptionPane.showMessageDialog(null, "Sucesso!!");
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(null, "Digite numeros apenas!!");
+						}
+					}
+				} 
+				else{
+					JOptionPane.showMessageDialog(null, "Banco incorreto!");
+				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Senha incorreta!");
 			}

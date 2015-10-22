@@ -1,26 +1,13 @@
 package br.usjt.caixaeletronico;
 
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 
 import br.usjt.caixaeletronico.model.ConnectionFactory;
-import br.usjt.caixaeletronico.model.Dispenser;
-import br.usjt.caixaeletronico.view.AdmLogin;
-import br.usjt.caixaeletronico.view.CadastroDebitoAutom;
-import br.usjt.caixaeletronico.view.ConsultarExtrato;
-import br.usjt.caixaeletronico.view.ConsultarSaldo;
-import br.usjt.caixaeletronico.view.CriaUsuarios;
+import br.usjt.caixaeletronico.view.CodigoAcesso;
 import br.usjt.caixaeletronico.view.InterClass;
 import br.usjt.caixaeletronico.view.Login;
-import br.usjt.caixaeletronico.view.Mensagem;
-import br.usjt.caixaeletronico.view.MenuPrinc;
-import br.usjt.caixaeletronico.view.OutroSaq;
-import br.usjt.caixaeletronico.view.PeriodoExtrato;
-import br.usjt.caixaeletronico.view.Saque;
-import br.usjt.caixaeletronico.view.TransfEntreConta;
 
 public class Main {
 
@@ -31,7 +18,8 @@ public class Main {
 	}
 
 	public static void start(ResourceBundle rb) {
-		JFrame view = new Login(rb);
+		JFrame view = new CodigoAcesso();
+		//JFrame view = new Login(rb);
 		//JFrame view = new CriaUsuarios();
 		ConnectionFactory conn = new ConnectionFactory();
 		ConnectionFactory.openFactory();

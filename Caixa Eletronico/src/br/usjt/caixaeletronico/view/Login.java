@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
+import br.usjt.caixaeletronico.control.AcessoCtrl;
 import br.usjt.caixaeletronico.control.LoginCtrl;
 import br.usjt.caixaeletronico.control.Utils;
 
@@ -27,6 +29,7 @@ public class Login extends JFrame {
 	private JPasswordField tSen;
 	private JLabel lAg, lCont, lSen, lBan;
 	private LoginCtrl loginCtrl;
+	private AcessoCtrl acessoCtrl; 
 
 	public Login(ResourceBundle resourceBundle) {
 		super(resourceBundle.getString("Login.titulo"));
@@ -60,11 +63,17 @@ public class Login extends JFrame {
 				String senha = new String(pass);
 				String agencia = tAg.getText().replace("-", "");
 				String conta = tCont.getText().replace("-", "");
-				boolean next = loginCtrl.entrar(agencia, conta, senha);
-				if(next){
-					menu.setVisible(next);
+				String banco = lBan.getText();
+				boolean next = loginCtrl.entrar(agencia, conta, senha, banco);
+				if (next) {
 					next = false;
-					actual.dispose();
+					CodigoAcesso codAcesso = new CodigoAcesso();
+					codAcesso.setVisible(true);
+					if (next) {
+						menu.setVisible(next);
+						next = false;
+						actual.dispose();
+					}
 				}
 			}
 		});
@@ -75,23 +84,28 @@ public class Login extends JFrame {
 		lAg = new JLabel(resourceBundle.getString("Login.agencia"));
 		lCont = new JLabel(resourceBundle.getString("Login.conta"));
 		lSen = new JLabel(resourceBundle.getString("Login.senha"));
-		// lBan = new JLabel(resourceBundle.getString("Login.banco"));
-		/*
-		 * JComboBox<String> Cban = new JComboBox<String> (); Cban.addItem("");
-		 * Cban.addItem("Itau"); Cban.addItem("Bradesco");
-		 * Cban.addItem("Santander"); Cban.addItem("HSBC");
-		 */
+		lBan = new JLabel(resourceBundle.getString("Login.banco"));
+
+		JComboBox<String> Cban = new JComboBox<String>();
+		Cban.addItem("");
+		Cban.addItem("ITAU");
+		Cban.addItem("BRADESCO");
+		Cban.addItem("BB");
+		Cban.addItem("CITIBANK");
+		Cban.addItem("SANTANDER");
+		Cban.addItem("HSBC");
+		Cban.addItem("CAIXA");
 
 		controlInput.add(controlLabel, BorderLayout.WEST);
 		controlInput.add(controlField, BorderLayout.CENTER);
 		controlLabel.add(lAg);
 		controlLabel.add(lCont);
 		controlLabel.add(lSen);
-		// controlLabel.add(lBan);
+		controlLabel.add(lBan);
 		controlField.add(tAg);
 		controlField.add(tCont);
 		controlField.add(tSen);
-		// controlField.add(Cban);
+		controlField.add(Cban);
 
 		// Controlar Botao
 		JPanel control = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
