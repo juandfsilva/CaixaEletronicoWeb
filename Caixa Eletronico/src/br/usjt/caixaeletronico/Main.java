@@ -18,8 +18,8 @@ public class Main {
 	}
 
 	public static void start(ResourceBundle rb) {
-		JFrame view = new CodigoAcesso();
-		//JFrame view = new Login(rb);
+		//JFrame view = new CodigoAcesso();
+		JFrame view = new Login(rb);
 		//JFrame view = new CriaUsuarios();
 		ConnectionFactory conn = new ConnectionFactory();
 		ConnectionFactory.openFactory();

@@ -97,4 +97,9 @@ public class Conta {
 	public boolean primeiroAcesso() {
 		return contaDAO.primeiroAcesso(getAgencia(), getConta());
 	}
+
+	public void trava() {
+		contaDAO.trava(agencia, conta, banco);
+		// TODO Auto-generated method stub
+	}
 }

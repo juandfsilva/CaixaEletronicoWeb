@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.TitledBorder;
@@ -29,7 +30,8 @@ public class Login extends JFrame {
 	private JPasswordField tSen;
 	private JLabel lAg, lCont, lSen, lBan;
 	private LoginCtrl loginCtrl;
-	private AcessoCtrl acessoCtrl; 
+	private AcessoCtrl acessoCtrl;
+	private JComboBox<String> Cban;
 
 	public Login(ResourceBundle resourceBundle) {
 		super(resourceBundle.getString("Login.titulo"));
@@ -63,17 +65,22 @@ public class Login extends JFrame {
 				String senha = new String(pass);
 				String agencia = tAg.getText().replace("-", "");
 				String conta = tCont.getText().replace("-", "");
-				String banco = lBan.getText();
+				String banco = (String)Cban.getSelectedItem();
 				boolean next = loginCtrl.entrar(agencia, conta, senha, banco);
 				if (next) {
-					next = false;
-					CodigoAcesso codAcesso = new CodigoAcesso();
+					actual.dispose();
+					CodigoAcesso codAcesso = new CodigoAcesso(new Acao() {
+						
+						@Override
+						public void falha() {
+						}
+						
+						@Override
+						public void executar() {
+							menu.setVisible(true);
+						}
+					});
 					codAcesso.setVisible(true);
-					if (next) {
-						menu.setVisible(next);
-						next = false;
-						actual.dispose();
-					}
 				}
 			}
 		});
@@ -86,7 +93,7 @@ public class Login extends JFrame {
 		lSen = new JLabel(resourceBundle.getString("Login.senha"));
 		lBan = new JLabel(resourceBundle.getString("Login.banco"));
 
-		JComboBox<String> Cban = new JComboBox<String>();
+		Cban = new JComboBox<String>();
 		Cban.addItem("");
 		Cban.addItem("ITAU");
 		Cban.addItem("BRADESCO");

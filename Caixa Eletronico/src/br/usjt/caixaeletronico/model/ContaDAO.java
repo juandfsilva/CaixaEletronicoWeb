@@ -68,14 +68,15 @@ public class ContaDAO {
 		}
 	}
 
-	public void setSaldo(double valor, int agencia, int conta) {
+	public void setSaldo(double valor, int agencia, int conta, String banco) {
 		try {
-			SQL = "update sis_bancario.conta" + " set con_saldo=(?)" + " where con_agencia = (?) and con_conta = (?)";
+			SQL = "update sis_bancario.conta" + " set con_saldo=(?)" + " where con_agencia = (?) and con_conta = (?) and con_banco = (?)";
 			// setting prepared statement
 			PreparedStatement preparedStmt = (PreparedStatement) ConnectionFactory.conn.prepareStatement(SQL);
 			preparedStmt.setDouble(1, valor);
 			preparedStmt.setInt(2, agencia);
 			preparedStmt.setInt(3, conta);
+			preparedStmt.setString(4, banco);
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,14 +97,15 @@ public class ContaDAO {
 		}
 	}
 	
-	public void setCodAcesso(int agencia, int conta, int cod) {
+	public void setCodAcesso(int agencia, int conta, int cod, String banco) {
 		try {
-			SQL = "update sis_bancario.conta" + " set con_codAcesso=(?)" + " where con_agencia = (?) and con_conta = (?)";
+			SQL = "update sis_bancario.conta" + " set con_codAcesso=(?)" + " where con_agencia = (?) and con_conta = (?) and con_banco = (?)";
 			// setting prepared statement
 			PreparedStatement preparedStmt = (PreparedStatement) ConnectionFactory.conn.prepareStatement(SQL);
 			preparedStmt.setInt(1, cod);
 			preparedStmt.setInt(2, agencia);
 			preparedStmt.setInt(3, conta);
+			preparedStmt.setString(4, banco);
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -183,5 +185,19 @@ public class ContaDAO {
 
 	public boolean comparaBanco(int agencia, int conta, String bancoDest) {
 		return getBanco(agencia, conta).equals(bancoDest);
+	}
+
+	public void trava(int agencia, int conta, String banco) {
+		try {
+			SQL = "update sis_bancario.conta set con_bloqueado=(?) where con_agencia = (?) and con_conta = (?) and con_banco = (?)";
+			PreparedStatement preparedStmt = (PreparedStatement) ConnectionFactory.conn.prepareStatement(SQL);
+			preparedStmt.setBoolean(1, true);
+			preparedStmt.setInt(2, agencia);
+			preparedStmt.setInt(3, conta);
+			preparedStmt.setString(4, banco);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
