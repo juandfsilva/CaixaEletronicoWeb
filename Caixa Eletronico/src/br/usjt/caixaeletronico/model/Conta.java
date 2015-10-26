@@ -30,9 +30,14 @@ public class Conta {
 		return conta;
 	}
 
-	public String getBanco() {
-		return banco;
+	public String getBanco(boolean vaiBD) {
+		if(!vaiBD){
+			return banco;
+		}else{
+			return contaDAO.getBanco(agencia, conta);
+		}
 	}
+	
 
 	public double getSaldo() {
 		double saldot = contaDAO.getSaldo(getAgencia(), getConta());
@@ -44,7 +49,7 @@ public class Conta {
 	}
 
 	public int getCodAcesso() {
-		int acesso = contaDAO.getCodAcesso(getAgencia(), getConta(), getBanco());
+		int acesso = contaDAO.getCodAcesso(getAgencia(), getConta(), getBanco(false));
 		return acesso;
 	}
 
@@ -54,7 +59,7 @@ public class Conta {
 
 	public void setAcesso(int cod_acesso) {
 		try {
-			contaDAO.setCodAcesso(getAgencia(), getConta(), cod_acesso, getBanco());
+			contaDAO.setCodAcesso(getAgencia(), getConta(), cod_acesso, getBanco(false));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,7 +79,7 @@ public class Conta {
 
 	public void setSaldo(double saldo) {
 		try {
-			contaDAO.setSaldo(saldo, getAgencia(), getConta(), getBanco());
+			contaDAO.setSaldo(saldo, getAgencia(), getConta(), getBanco(false));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -85,24 +90,41 @@ public class Conta {
 		this.conta = conta;
 	}
 
-	public int transferencia(double valor, int agDestino, int acDestino) {
+	public int transferencia(double valor, int agDestino, int acDestino) {		
 		return contaDAO.transferencia(valor, agDestino, acDestino);
 	}
 
 	public boolean verificaBanco(String bancoDest) {
-		return getBanco().equals(bancoDest);
+		return getBanco(false).equals(bancoDest);
 	}
 
 	public boolean primeiroAcesso() {
-		return contaDAO.primeiroAcesso(getAgencia(), getConta(), getBanco());
-	}
-
-	public void trava() {
-		contaDAO.trava(agencia, conta, banco);
-		// TODO Auto-generated method stub
+		return contaDAO.primeiroAcesso(getAgencia(), getConta(), getBanco(false));
 	}
 
 	public boolean verificaConta(String agencia2, String conta2, String banco2) {
 		return contaDAO.verificaCadastro(agencia, conta, banco2);
+	}
+
+	public void bloqueia(boolean bloqueia) {
+		if(bloqueia){
+			contaDAO.bloqueia(getAgencia(), getConta(), getBanco(false), 1);
+		}else{
+			contaDAO.bloqueia(getAgencia(), getConta(), getBanco(false), 0);
+		}
+	}
+
+	public boolean bloqueada() {
+		if(contaDAO.bloqueada(getAgencia(), getConta(), getBanco(false)) == 1){
+			return true;
+		}else if(contaDAO.bloqueada(getAgencia(), getConta(), getBanco(false)) == -1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public int saque(double valor) {
+		return contaDAO.Saque(valor);
 	}
 }

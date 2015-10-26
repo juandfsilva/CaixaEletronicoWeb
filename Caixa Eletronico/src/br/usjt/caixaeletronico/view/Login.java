@@ -47,7 +47,8 @@ public class Login extends JFrame {
 		}
 		AGENCY.setValidCharacters("0123456789");
 		ACCOUNT.setValidCharacters("0123456789");
-		loginCtrl = new LoginCtrl(this);
+		loginCtrl = new LoginCtrl(this, resourceBundle);
+		acessoCtrl = new AcessoCtrl();
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -66,27 +67,26 @@ public class Login extends JFrame {
 				String senha = new String(pass);
 				String agencia = tAg.getText().replace("-", "");
 				String conta = tCont.getText().replace("-", "");
-				String banco = (String)Cban.getSelectedItem();
+				String banco = (String) Cban.getSelectedItem();
 				int next = loginCtrl.entrar(agencia, conta, senha, banco);
 				if (next == 1) {
 					actual.dispose();
 					CodigoAcesso codAcesso = new CodigoAcesso(new Acao() {
-						
+
 						@Override
 						public void falha() {
+							// Ntem o q implementar
 						}
-						
+
 						@Override
 						public void executar() {
 							menu.setVisible(true);
 						}
-					});
+					}, rb);
 					codAcesso.setVisible(true);
-				}else if(next == 0){
+				} else if (next == 0) {
 					CadCodAcesso cadCodAcesso = new CadCodAcesso(rb);
 					cadCodAcesso.setVisible(true);
-				}else{
-					JOptionPane.showMessageDialog(null, rb.getString("Login.entrar"));
 				}
 			}
 		});

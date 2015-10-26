@@ -13,5 +13,13 @@ public class AcessoCtrl {
 	public void Cadastra(int cod_acesso){
 		Utils.objConta.setAcesso(cod_acesso);
 	}
+
+	public void bloqueia(boolean bloqueia) {
+		Utils.objConta.bloqueia(bloqueia);
+	}
+
+	public boolean bloqueada() {
+		return Utils.objConta.bloqueada();
+	}
 	
 }

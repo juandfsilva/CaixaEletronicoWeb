@@ -20,6 +20,32 @@ public class MenuPrinc extends MenuTemplate {
 				resourceBundle.getString("Transferencia.titulo"),
 				resourceBundle.getString("Sair") });
 		final JFrame actual = this;
+		
+		super.buttons[0].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CadastroDebitoAutom deb = new CadastroDebitoAutom(resourceBundle);
+				deb.setVisible(true);
+				actual.dispose();
+			}
+		});
+		
+		super.buttons[1].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Saque sq = new Saque(resourceBundle);
+				sq.setVisible(true);
+				actual.dispose();
+			}
+		});
+		
+		
+		super.buttons[2].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PeriodoExtrato extrato = new PeriodoExtrato(resourceBundle);
+				extrato.setVisible(true);
+				actual.dispose();
+			}
+		});
+		
 		super.buttons[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ConsultarSaldo saldo = new ConsultarSaldo(resourceBundle);

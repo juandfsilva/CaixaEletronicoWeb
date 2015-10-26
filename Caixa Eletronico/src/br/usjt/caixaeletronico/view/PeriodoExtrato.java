@@ -1,5 +1,6 @@
 package br.usjt.caixaeletronico.view;
 
+import java.awt.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ public class PeriodoExtrato extends MenuTemplate {
 		buttons[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				PeriodoExtrato.this.dispose();
 				JFrame cExtrato = new ConsultarExtrato(resourceBundle, resourceBundle.getString("Periodo.extrato7"), 7);
 				cExtrato.setVisible(true);
 			}
@@ -24,6 +26,7 @@ public class PeriodoExtrato extends MenuTemplate {
 		buttons[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				PeriodoExtrato.this.dispose();
 				JFrame cExtrato = new ConsultarExtrato(resourceBundle, resourceBundle.getString("Periodo.extrato8"), 14);
 				cExtrato.setVisible(true);
 			}
@@ -32,6 +35,7 @@ public class PeriodoExtrato extends MenuTemplate {
 		buttons[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				PeriodoExtrato.this.dispose();
 				int days = Integer.parseInt(
 						JOptionPane.showInputDialog(resourceBundle.getString("Periodo.digite")));
 				JFrame cExtrato = new ConsultarExtrato(resourceBundle, resourceBundle.getString("Periodo.extratoOutro"), days);
@@ -43,7 +47,9 @@ public class PeriodoExtrato extends MenuTemplate {
 		buttons[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				dispose();
+				PeriodoExtrato.this.dispose();
+				MenuPrinc mn = new MenuPrinc(resourceBundle);
+				mn.setVisible(true);
 			}
 		});
 		

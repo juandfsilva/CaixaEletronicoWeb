@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ResourceBundle;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -21,9 +22,11 @@ import br.usjt.caixaeletronico.view.Login;
 
 public class LoginCtrl {
 	Login loginView;
+	final ResourceBundle rb;
 
-	public LoginCtrl(Login loginView) {
+	public LoginCtrl(Login loginView, ResourceBundle resb) {
 		this.loginView = loginView;
+		rb = resb;
 	}
 
 	public int entrar(String agencia, String conta, String senha, String banco) {
@@ -57,10 +60,14 @@ public class LoginCtrl {
 				Utils.objConta.setSaldo(Utils.objConta.getSaldo());
 				Utils.objConta.setBanco(banco);
 				if (Utils.objConta.verificaConta(agencia, conta, banco)) {
-					if(Utils.objConta.primeiroAcesso()){
-						return 1;
-					}else{
-						return 0;
+					if (!Utils.objConta.bloqueada()) {
+						if (Utils.objConta.primeiroAcesso()) {
+							return 1;
+						} else {
+							return 0;
+						}
+					} else {
+						JOptionPane.showMessageDialog(null,rb.getString("CadCodAcesso.bloqueio"));
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario não encontrado");

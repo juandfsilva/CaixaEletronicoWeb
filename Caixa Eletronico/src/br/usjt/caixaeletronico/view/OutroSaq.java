@@ -8,14 +8,19 @@ import java.util.ResourceBundle;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
-public class OutroSaq extends JFrame implements ActionListener {
+import br.usjt.caixaeletronico.control.ContaCtrl;
+import br.usjt.caixaeletronico.model.Conta;
+
+public class OutroSaq extends JFrame{
 
 	private JButton bPros, bCanc;
 	private JTextField tValor;
 	private JLabel lR$, lText;
+	final ResourceBundle rb;
 
-	public OutroSaq(ResourceBundle resourceBundle) {
+	public OutroSaq(final ResourceBundle resourceBundle) {
 		super(resourceBundle.getString("Saque2.Titulo"));
+		rb = resourceBundle;
 		// controlar layout
 		JPanel controlInput = new JPanel(new BorderLayout(5, 5));
 		// controlar label
@@ -50,11 +55,29 @@ public class OutroSaq extends JFrame implements ActionListener {
 		setResizable(false);
 		setSize(800, 600);
 		setLocationRelativeTo(null);
+		
+		bPros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContaCtrl contaCtrl = new ContaCtrl();
+				int saque = contaCtrl.Saque(Integer.parseInt(tValor.getText()));
+				if (saque == 1) {
+					JOptionPane.showMessageDialog(null, rb.getString("suceso"));
+				} else if (saque == -1) {
+					JOptionPane.showMessageDialog(null, rb.getString("Transferencia.semSaldo"));
+				} else {
+					JOptionPane.showMessageDialog(null, rb.getString("erro"));
+				}
+			}
+		});
+		
+		bCanc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OutroSaq.this.dispose();
+				MenuPrinc mn = new MenuPrinc(resourceBundle);
+				mn.setVisible(true);
+			}
+		});
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 }

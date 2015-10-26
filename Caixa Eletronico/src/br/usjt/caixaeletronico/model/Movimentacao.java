@@ -47,21 +47,8 @@ public class Movimentacao {
 	    return new java.sql.Date(today.getTime());
 	}
 	
-	public String[] getMovsToVector(Conta conta){
-		ArrayList<String> array = movDAO.getMov(conta);
-		String[] valores = new String[array.size()];
-		for(int i=0; i<array.size();i++){
-			valores[i] = array.get(i);
-		}
-		return valores;	
-	}
-	
-	public ArrayList<String> getMovs(Conta conta){
-		return movDAO.getMov(conta);
-	}
-	
-	public void insert(){
-		movDAO.putMov(this);
+	public void insert(int acDest, int agDest, int doctoDebt, int codCli, int dia){
+		movDAO.putMov(this, acDest, agDest, doctoDebt, codCli, dia);
 	}
 	
 	

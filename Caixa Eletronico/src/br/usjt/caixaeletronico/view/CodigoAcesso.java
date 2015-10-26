@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,7 +25,7 @@ public class CodigoAcesso extends JFrame {
 	int tentativa = 0;
 	AcessoCtrl acessoCtrl = new AcessoCtrl();
 
-	public CodigoAcesso(Acao acao) {
+	public CodigoAcesso(Acao acao, ResourceBundle resourceBundle) {
 		super();
 		this.acao = acao;
 		Random rand = new Random();
@@ -51,27 +52,27 @@ public class CodigoAcesso extends JFrame {
 		}
 		setLocationRelativeTo(null);
 		pack();
+		final ResourceBundle rb = resourceBundle;
 		for (int i = 0; i < buttons.length; ++i) {
 			final int j = i;
 			buttons[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					codAcesso += buttonsText[j].replace(" ", "");
 					selecoes++;
-					fim();
+					fim(rb);
 				}
 			});
 		}
 	}
 
-	public void fim() {
+	public void fim(ResourceBundle resourceBundle) {
 		if (selecoes >= 3) {
 			if(acessoCtrl.verifica(codAcesso)){
 				this.dispose();
 				acao.executar();
 			}else if (tentativa >= 3) {
-				JOptionPane.showMessageDialog(null,
-						"Você errou 3 vezes seu código de acesso, sua conta será bloqueada.\nPor favor contate o banco.");
-				Utils.objConta.trava();
+				JOptionPane.showMessageDialog(null,resourceBundle.getString("CadCodAcesso.bloqueio"));
+				acessoCtrl.bloqueia(true);
 				this.dispose();
 				acao.falha();
 			} else {
@@ -79,7 +80,7 @@ public class CodigoAcesso extends JFrame {
 				selecoes = 0;
 				codAcesso = "";
 				JOptionPane.showMessageDialog(null,
-						"Código inválido, você tem " + (3 - tentativa) + " tentativas restantes.");
+						resourceBundle.getString("CadCodAcesso.tentativa1")+" "+(3 - tentativa)+" "+resourceBundle.getString("CadCodAcesso.tentativa2"));
 			}
 		}
 
