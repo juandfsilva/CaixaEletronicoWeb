@@ -57,6 +57,7 @@ public class Login extends JFrame {
 
 		final MenuPrinc menu = new MenuPrinc(resourceBundle);
 		// Organizar itens no layout
+		final ResourceBundle rb = resourceBundle;
 		bEnt = new JButton(resourceBundle.getString("Login.entrar"));
 		bEnt.addActionListener(new ActionListener() {
 			@Override
@@ -66,8 +67,8 @@ public class Login extends JFrame {
 				String agencia = tAg.getText().replace("-", "");
 				String conta = tCont.getText().replace("-", "");
 				String banco = (String)Cban.getSelectedItem();
-				boolean next = loginCtrl.entrar(agencia, conta, senha, banco);
-				if (next) {
+				int next = loginCtrl.entrar(agencia, conta, senha, banco);
+				if (next == 1) {
 					actual.dispose();
 					CodigoAcesso codAcesso = new CodigoAcesso(new Acao() {
 						
@@ -81,6 +82,11 @@ public class Login extends JFrame {
 						}
 					});
 					codAcesso.setVisible(true);
+				}else if(next == 0){
+					CadCodAcesso cadCodAcesso = new CadCodAcesso(rb);
+					cadCodAcesso.setVisible(true);
+				}else{
+					JOptionPane.showMessageDialog(null, rb.getString("Login.entrar"));
 				}
 			}
 		});

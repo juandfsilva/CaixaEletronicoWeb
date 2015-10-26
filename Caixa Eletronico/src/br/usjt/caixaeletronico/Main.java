@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javax.swing.JFrame;
 
 import br.usjt.caixaeletronico.model.ConnectionFactory;
+import br.usjt.caixaeletronico.view.CadCodAcesso;
 import br.usjt.caixaeletronico.view.CodigoAcesso;
 import br.usjt.caixaeletronico.view.InterClass;
 import br.usjt.caixaeletronico.view.Login;
@@ -18,7 +19,8 @@ public class Main {
 	}
 
 	public static void start(ResourceBundle rb) {
-		//JFrame view = new CodigoAcesso();
+		//JFrame view = new CadCodAcesso(rb);
+		//JFrame view = new CodigoAcesso(null);
 		JFrame view = new Login(rb);
 		//JFrame view = new CriaUsuarios();
 		ConnectionFactory conn = new ConnectionFactory();

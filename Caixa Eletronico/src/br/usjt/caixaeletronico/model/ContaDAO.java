@@ -51,16 +51,19 @@ public class ContaDAO {
 		}
 	}
 	
-	public int getCodAcesso(int agencia, int conta){
+	public int getCodAcesso(int agencia, int conta, String banco){
 		try {
 			int acesso = 0;
 			stm = (Statement) ConnectionFactory.conn.createStatement();
-			SQL = "select * from sis_bancario.conta where con_conta=" + conta + " AND con_agencia=" + agencia
-					+ ";";
+			SQL = "select * from sis_bancario.conta"+
+					" where con_conta=" + conta + 
+					" AND con_agencia=" + agencia +
+					" AND con_banco='" + banco + "';";
 			rs = stm.executeQuery(SQL);
 			while (rs.next()) {
 				acesso = rs.getInt("con_codAcesso");
 			}
+			System.out.println(acesso);
 			return acesso;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,7 +102,11 @@ public class ContaDAO {
 	
 	public void setCodAcesso(int agencia, int conta, int cod, String banco) {
 		try {
-			SQL = "update sis_bancario.conta" + " set con_codAcesso=(?)" + " where con_agencia = (?) and con_conta = (?) and con_banco = (?)";
+			SQL = "update sis_bancario.conta"+
+					" set con_codAcesso=(?)"+
+					" where con_agencia = (?) and"+
+					" con_conta = (?) and"+
+					" con_banco = (?)";
 			// setting prepared statement
 			PreparedStatement preparedStmt = (PreparedStatement) ConnectionFactory.conn.prepareStatement(SQL);
 			preparedStmt.setInt(1, cod);
@@ -116,8 +123,9 @@ public class ContaDAO {
 	public int transferencia(double valor, int agDestino, int acDestino) {
 		Conta accTransf = new Conta(0, acDestino, agDestino, 0, 0, null);
 		double saldo = Utils.objConta.getSaldo();
+		String bancoDest = Utils.objConta.getBanco();
 		if (comparaBanco(Utils.objConta.getAgencia(), Utils.objConta.getConta(), accTransf.getBanco())) {
-			if (verificaCadastro(agDestino, acDestino)) {
+			if (verificaCadastro(agDestino, acDestino, bancoDest)) {
 				if (saldo >= valor) {
 					try {
 						// Conta de saida
@@ -143,11 +151,14 @@ public class ContaDAO {
 		}
 	}
 
-	public boolean verificaCadastro(int agencia, int conta) {
+	public boolean verificaCadastro(int agencia, int conta, String banco) {
 		int verfic = 0;
 		try {
 			stm = (Statement) ConnectionFactory.conn.createStatement();
-			SQL = "select * from sis_bancario.conta where con_conta=" + conta + " AND con_agencia=" + agencia + ";";
+			SQL = "select * from sis_bancario.conta"+
+					" where con_conta=" + conta + 
+					" AND con_agencia=" + agencia +
+					" AND con_banco= '"+ banco +"';";
 			rs = stm.executeQuery(SQL);
 			while (rs.next()) {
 				verfic = rs.getInt("con_conta");
@@ -163,14 +174,14 @@ public class ContaDAO {
 		}
 	}
 
-	public boolean primeiroAcesso(int agencia, int conta) {
+	public boolean primeiroAcesso(int agencia, int conta, String banco) {
 		int verfic = 0;
 		try {
 			stm = (Statement) ConnectionFactory.conn.createStatement();
 			SQL = "select * from sis_bancario.conta where con_conta=" + conta + " AND con_agencia=" + agencia + ";";
 			rs = stm.executeQuery(SQL);
 			while (rs.next()) {
-				verfic = rs.getInt("con_codAceso");
+				verfic = rs.getInt("con_codAcesso");
 			}
 			if (verfic > 0) {
 				return true;

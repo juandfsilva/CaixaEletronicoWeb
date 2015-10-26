@@ -31,8 +31,7 @@ public class Conta {
 	}
 
 	public String getBanco() {
-		String bancot = contaDAO.getBanco(getAgencia(), getConta());
-		return bancot;
+		return banco;
 	}
 
 	public double getSaldo() {
@@ -45,7 +44,7 @@ public class Conta {
 	}
 
 	public int getCodAcesso() {
-		int acesso = contaDAO.getCodAcesso(getAgencia(), getConta());
+		int acesso = contaDAO.getCodAcesso(getAgencia(), getConta(), getBanco());
 		return acesso;
 	}
 
@@ -55,7 +54,7 @@ public class Conta {
 
 	public void setAcesso(int cod_acesso) {
 		try {
-			contaDAO.setCodAcesso(cod_acesso, getAgencia(), getConta());
+			contaDAO.setCodAcesso(getAgencia(), getConta(), cod_acesso, getBanco());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -75,7 +74,7 @@ public class Conta {
 
 	public void setSaldo(double saldo) {
 		try {
-			contaDAO.setSaldo(saldo, getAgencia(), getConta());
+			contaDAO.setSaldo(saldo, getAgencia(), getConta(), getBanco());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,11 +94,15 @@ public class Conta {
 	}
 
 	public boolean primeiroAcesso() {
-		return contaDAO.primeiroAcesso(getAgencia(), getConta());
+		return contaDAO.primeiroAcesso(getAgencia(), getConta(), getBanco());
 	}
 
 	public void trava() {
 		contaDAO.trava(agencia, conta, banco);
 		// TODO Auto-generated method stub
+	}
+
+	public boolean verificaConta(String agencia2, String conta2, String banco2) {
+		return contaDAO.verificaCadastro(agencia, conta, banco2);
 	}
 }

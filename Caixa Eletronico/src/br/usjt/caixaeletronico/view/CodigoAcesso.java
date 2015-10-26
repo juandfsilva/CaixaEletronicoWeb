@@ -18,32 +18,31 @@ import br.usjt.caixaeletronico.control.Utils;
 public class CodigoAcesso extends JFrame {
 
 	String[] buttonsText;// = { "1 2", "3 4", "5 6", "7 8", "9 0" };
-	String codAcesso="";
+	String codAcesso = "";
 	int selecoes = 0;
 	Acao acao;
 	int tentativa = 0;
+	AcessoCtrl acessoCtrl = new AcessoCtrl();
+
 	public CodigoAcesso(Acao acao) {
 		super();
 		this.acao = acao;
 		Random rand = new Random();
-		Container c = getContentPane();
 		FlowLayout flow = new FlowLayout();
 		setLayout(flow);
 
 		int[] numeros = new int[10];
-		for(int i = 0; i < numeros.length; ++i)
+		for (int i = 0; i < numeros.length; ++i)
 			numeros[i] = i;
-		for(int i = numeros.length-1; i > 0; --i)
-		{
-			int j = rand.nextInt(i+1);
+		for (int i = numeros.length - 1; i > 0; --i) {
+			int j = rand.nextInt(i + 1);
 			int temp = numeros[i];
 			numeros[i] = numeros[j];
 			numeros[j] = temp;
 		}
-		buttonsText = new String[numeros.length/2];
-		for(int i = 0; i < buttonsText.length; i++)
-		{
-			buttonsText[i] = numeros[i*2] + " " + numeros[i * 2 + 1];
+		buttonsText = new String[numeros.length / 2];
+		for (int i = 0; i < buttonsText.length; i++) {
+			buttonsText[i] = numeros[i * 2] + " " + numeros[i * 2 + 1];
 		}
 		JButton[] buttons = new JButton[5];
 		for (int i = 0; i < buttonsText.length; i++) {
@@ -52,7 +51,7 @@ public class CodigoAcesso extends JFrame {
 		}
 		setLocationRelativeTo(null);
 		pack();
-		for(int i = 0; i < buttons.length; ++i) {
+		for (int i = 0; i < buttons.length; ++i) {
 			final int j = i;
 			buttons[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -60,34 +59,27 @@ public class CodigoAcesso extends JFrame {
 					selecoes++;
 					fim();
 				}
-			});	
+			});
 		}
 	}
 
 	public void fim() {
 		if (selecoes >= 3) {
-			AcessoCtrl acessoCtrl = new AcessoCtrl();
-			if(acessoCtrl.verifica(codAcesso))
-			{
+			if(acessoCtrl.verifica(codAcesso)){
 				this.dispose();
-				acao.executar();	
-			}
-			else
-			{
-				if(tentativa >= 3)
-				{
-					JOptionPane.showMessageDialog(null, "Você errou 3 vezes seu código de acesso, sua conta será bloqueada.\nPor favor contate o banco.");
-					Utils.objConta.trava();
-					this.dispose();
-					acao.falha();
-				}
-				else
-				{
-					tentativa++;
-					selecoes = 0;
-					codAcesso = "";
-					JOptionPane.showMessageDialog(null, "Código inválido, você tem " + (3-tentativa) + " tentativas restantes.");
-				}
+				acao.executar();
+			}else if (tentativa >= 3) {
+				JOptionPane.showMessageDialog(null,
+						"Você errou 3 vezes seu código de acesso, sua conta será bloqueada.\nPor favor contate o banco.");
+				Utils.objConta.trava();
+				this.dispose();
+				acao.falha();
+			} else {
+				tentativa++;
+				selecoes = 0;
+				codAcesso = "";
+				JOptionPane.showMessageDialog(null,
+						"Código inválido, você tem " + (3 - tentativa) + " tentativas restantes.");
 			}
 		}
 
